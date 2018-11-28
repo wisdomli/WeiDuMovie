@@ -2,10 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
-
-    <TextView
-        android:text="温浩"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:orientation="vertical">
+    <RelativeLayout
+        android:background="@drawable/beijing"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_09">
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_70"
+            android:src="@mipmap/touxiang"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_10" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/my_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/frist"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_101"
+            android:background="@drawable/my_shape"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_86" />
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/frist"
+            android:id="@+id/two"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_101"
+            android:background="@drawable/my_shape"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_86" />
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/two"
+            android:id="@+id/three"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_101"
+            android:background="@drawable/my_shape"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_86" />
+    </RelativeLayout>
 </LinearLayout>
