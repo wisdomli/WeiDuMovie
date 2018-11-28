@@ -13,5 +13,6 @@ public class MainActivity extends BaseActivityPresenter<MainActivityPresenter> {
     @Override
     public Class<MainActivityPresenter> getClassDelegate() {
         return MainActivityPresenter.class;
+        //温浩
     }
 }
