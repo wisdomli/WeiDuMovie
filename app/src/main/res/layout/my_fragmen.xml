@@ -8,6 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_220">
         <ImageView
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:src="@drawable/my_icon_remind_default"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24" />
+        <ImageView
+            android:id="@+id/image_head"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_70"
             android:src="@mipmap/touxiang"
@@ -126,7 +133,7 @@
                 <TextView
                     android:layout_centerVertical="true"
                     android:layout_below="@+id/version"
-                    android:text="购票记录"
+                    android:text="最新版本"
                     android:layout_marginTop="@dimen/dp_10"
                     android:layout_marginLeft="@dimen/dp_140"
                     android:layout_width="wrap_content"
