@@ -52,8 +52,14 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
         FragmentPager fragmentPager = new FragmentPager(manager);
          min_ViewPager =(ViewPager) get(R.id.min_ViewPager);
         min_ViewPager.setAdapter(fragmentPager);
+        min_ViewPager.setCurrentItem(0);
 
-
+        setSizeMin(btn_film);
+        setSizeMin(btn_cinema);
+        setSizeMin(btn_my);
+        btn_film.setImageResource(R.drawable.com_icon_film_fault);
+        btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
+        btn_my.setImageResource(R.drawable.com_icon_my_default);
     }
 
      private class FragmentPager extends FragmentPagerAdapter {
@@ -98,14 +104,16 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
         switch (view.getId()){
             case R.id.btn_film:
                 setSizeMax(btn_film);
-
+                setSizeMin(btn_cinema);
+                setSizeMin(btn_my);
                 btn_film.setImageResource(R.drawable.com_icon_film_selected);
                 btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
                 btn_my.setImageResource(R.drawable.com_icon_my_default);
                 min_ViewPager.setCurrentItem(0);
                 break;
             case R.id.btn_cinema:
-
+                setSizeMin(btn_film);
+                setSizeMin(btn_my);
                 setSizeMax(btn_cinema);
                 btn_cinema.setImageResource(R.drawable.com_icon_cinema_selected);
                 btn_my.setImageResource(R.drawable.com_icon_my_default);
@@ -113,8 +121,8 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
                 min_ViewPager.setCurrentItem(1);
                 break;
             case R.id.btn_my:
-
-
+                setSizeMin(btn_film);
+                setSizeMin(btn_cinema);
                 setSizeMax(btn_my);
                 btn_my.setImageResource(R.drawable.com_icon_my_selected);
                 btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
