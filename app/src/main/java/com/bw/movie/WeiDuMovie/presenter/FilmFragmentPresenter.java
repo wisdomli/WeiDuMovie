@@ -1,5 +1,7 @@
 package com.bw.movie.WeiDuMovie.presenter;
 
+import android.content.Context;
+
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 
@@ -12,5 +14,19 @@ public class FilmFragmentPresenter extends AppDelegate {
     @Override
     public int getLayoutId() {
         return R.layout.film_fragment;
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+
+
+    }
+
+   private Context context;
+    @Override
+    public void getContext(Context context) {
+        super.getContext(context);
+        this.context = context;
     }
 }
