@@ -1,5 +1,6 @@
 package com.bw.movie.WeiDuMovie.presenter;
 
+import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 
 /**
@@ -10,6 +11,6 @@ import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 public class FilmFragmentPresenter extends AppDelegate {
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.film_fragment;
     }
 }
