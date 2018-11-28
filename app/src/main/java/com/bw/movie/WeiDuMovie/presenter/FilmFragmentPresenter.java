@@ -20,7 +20,6 @@ public class FilmFragmentPresenter extends AppDelegate {
     public void initData() {
         super.initData();
 
-
     }
 
    private Context context;
