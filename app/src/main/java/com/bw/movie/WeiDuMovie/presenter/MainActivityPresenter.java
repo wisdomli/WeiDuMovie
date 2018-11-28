@@ -32,7 +32,7 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
     private FrameLayout min_frgament;
    private List<Fragment> fragments = new ArrayList<>();
     private ViewPager min_ViewPager;
-
+    private boolean isClik = true;
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -52,14 +52,14 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
         FragmentPager fragmentPager = new FragmentPager(manager);
          min_ViewPager =(ViewPager) get(R.id.min_ViewPager);
         min_ViewPager.setAdapter(fragmentPager);
-        min_ViewPager.setCurrentItem(0);
 
-        setSizeMin(btn_film);
+        setSizeMax(btn_film);
         setSizeMin(btn_cinema);
         setSizeMin(btn_my);
-        btn_film.setImageResource(R.drawable.com_icon_film_fault);
+        btn_film.setImageResource(R.drawable.com_icon_film_selected);
         btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
         btn_my.setImageResource(R.drawable.com_icon_my_default);
+        min_ViewPager.setCurrentItem(0);
     }
 
      private class FragmentPager extends FragmentPagerAdapter {
@@ -103,13 +103,17 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_film:
-                setSizeMax(btn_film);
-                setSizeMin(btn_cinema);
-                setSizeMin(btn_my);
-                btn_film.setImageResource(R.drawable.com_icon_film_selected);
-                btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
-                btn_my.setImageResource(R.drawable.com_icon_my_default);
-                min_ViewPager.setCurrentItem(0);
+
+                    setSizeMax(btn_film);
+                    setSizeMin(btn_cinema);
+                    setSizeMin(btn_my);
+                    btn_film.setImageResource(R.drawable.com_icon_film_selected);
+                    btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
+                    btn_my.setImageResource(R.drawable.com_icon_my_default);
+                    min_ViewPager.setCurrentItem(0);
+
+
+
                 break;
             case R.id.btn_cinema:
                 setSizeMin(btn_film);
