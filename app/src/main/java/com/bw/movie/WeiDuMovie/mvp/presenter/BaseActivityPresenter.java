@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.bw.movie.WeiDuMovie.Immersive.UltimateBar;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 
 /**
@@ -35,8 +36,11 @@ public abstract class BaseActivityPresenter<T extends AppDelegate>extends AppCom
         delegate.getContext(this);
         initWeiGht();
         delegate.initData();
+        // 沉浸式
+        UltimateBar.newImmersionBuilder()
+                .applyNav(false)   // 是否应用到导航栏
+                .build(this)
+                .apply();
     }
-
-    public void initWeiGht() {
-    }
+    public void initWeiGht() {}
 }
