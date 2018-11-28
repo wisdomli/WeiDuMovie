@@ -7,6 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bw.movie.WeiDuMovie.net.HttpHelper;
+
+import java.util.Map;
+
 /**
  * 作者:李自强
  * <p>
@@ -55,6 +59,39 @@ public abstract class AppDelegate implements IDelegate{
     public void getContext(Context context) {
     this.context = context;
     }
+   // get请求
+    public void getString(final int type, String url, Map<String,String> map){
+        new HttpHelper().get(url,map).rosout(new HttpHelper.HttpLsener() {
+            @Override
+            public void suecss(String data) {
+                suecssString(type,data);
+            }
 
+            @Override
+            public void erorr(String erorr) {
+                erorrString(erorr);
+            }
+        });
+    }
+
+   // post请求
+    public void postString(final int type, String url, Map<String,String> map){
+        new HttpHelper().get(url,map).rosout(new HttpHelper.HttpLsener() {
+            @Override
+            public void suecss(String data) {
+                suecssString(type,data);
+            }
+
+            @Override
+            public void erorr(String erorr) {
+                erorrString(erorr);
+            }
+        });
+    }
+
+
+    public void suecssString(int type,String data){}
+
+    public void erorrString(String erorr){}
 
 }
