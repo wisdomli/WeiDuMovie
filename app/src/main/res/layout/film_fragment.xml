@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    >
+    android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/moviebackground_02"
         android:layout_width="match_parent"
         android:layout_height="186dp"
         android:scaleType="fitXY"
         android:src="@drawable/moviebackground_02" />
 
+
     <ImageView
+        android:id="@+id/home_loc_white"
         android:layout_width="@dimen/dp_48"
         android:layout_height="48dp"
-        android:padding="@dimen/dp_06"
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_20"
-        android:background="#8D018A"
+        android:padding="@dimen/dp_06"
         android:src="@drawable/com_icon_loc_white_default" />
 
+    <TextView
+        android:id="@+id/home_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_toRightOf="@+id/home_loc_white"
+        android:text="北京"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
+
+
     <RelativeLayout
+        android:id="@+id/home_search"
         android:layout_width="@dimen/dp_50"
         android:layout_height="@dimen/dp_24"
         android:layout_alignParentRight="true"
@@ -32,7 +44,7 @@
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
             android:src="@drawable/com_icon_search_default" />
-
     </RelativeLayout>
+
 
 </RelativeLayout>
