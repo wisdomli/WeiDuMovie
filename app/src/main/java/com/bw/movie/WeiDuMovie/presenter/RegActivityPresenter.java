@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.aestoolkit.EncryptUtil;
@@ -20,9 +21,12 @@ import java.util.Map;
  * 作者：温浩
  * 时间：2018/11/28
  */
-public class RegActivityPresenter extends AppDelegate {
-    private Map<String,String> map = new HashMap<>();
-    private String name;
+public class RegActivityPresenter extends AppDelegate implements View.OnClickListener {
+    private Map<String, String> map = new HashMap<>();
+    private EditText my_user_name, my_user_sex, my_user_data, my_user_phonenumber, my_user_email, my_user_pwd;
+    private int sexs;
+
+    private RelativeLayout Reg_btn;
 
     @Override
     public int getLayoutId() {
@@ -32,54 +36,59 @@ public class RegActivityPresenter extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
-      EditText my_user_name= get(R.id.my_user_name);
-      EditText my_user_sex= get(R.id.my_user_sex);
-      EditText my_user_data= get(R.id.my_user_data);
-      EditText my_user_phonenumber= get(R.id.my_user_phonenumber);
-      EditText my_user_email= get(R.id.my_user_email);
-      EditText  my_user_pwd =get(R.id.my_user_pwd);
-      // 获取输入
-        String pwd = my_user_pwd.getText().toString();
-        // 进行密码加密
-        String pwds = EncryptUtil.encrypt(pwd);
-        name = my_user_name.getText().toString().trim();
-        String sex = my_user_sex.getText().toString().trim();
-        String data = my_user_data.getText().toString().trim();
-        String phonenumber = my_user_phonenumber.getText().toString().trim();
-        String email = my_user_email.getText().toString().trim();
-        
-
-        map.put("nickName","顾梓舒");
-        map.put("phone","18533959663");
-        map.put("pwd",pwds);
-        map.put("pwd2",pwds);
-        map.put("sex","1");
-        map.put("birthday",data);
-        map.put("os","android");
-        map.put("email","1757601669@qq.com");
-
-       RelativeLayout Reg_btn = get(R.id.Reg_btn);
-
-        Reg_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                postString(0, HttpUrl.RegisterUrl,map);
-                Log.i("RegActivityPresenter",name);
-            }
-        });
-
+        my_user_name = get(R.id.my_user_name);
+        my_user_sex = get(R.id.my_user_sex);
+        my_user_data = get(R.id.my_user_data);
+        my_user_phonenumber = get(R.id.my_user_phonenumber);
+        my_user_email = get(R.id.my_user_email);
+        my_user_pwd = get(R.id.my_user_pwd);
+        Reg_btn = get(R.id.Reg_btn);
+        setOnClikLisener(this, R.id.Reg_btn);
     }
 
     @Override
     public void suecssString(int type, String data) {
         super.suecssString(type, data);
-        Log.i("RegActivityPresenter",data);
+        Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
     }
 
     private Context context;
+
     @Override
     public void getContext(Context context) {
         super.getContext(context);
         this.context = context;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.Reg_btn:
+                // 获取输入
+                String pwd = my_user_pwd.getText().toString();
+                // 进行密码加密
+                String pwds = EncryptUtil.encrypt(pwd);
+                String name = my_user_name.getText().toString();
+                String sex = my_user_sex.getText().toString();
+                if ("男".equals(sex)) {
+                    sexs = 1;
+                } else if ("女".equals(sex)) {
+                    sexs =2;
+                }
+                String data = my_user_data.getText().toString();
+                String phonenumber = my_user_phonenumber.getText().toString();
+                String email = my_user_email.getText().toString();
+
+                map.put("nickName", name);
+                map.put("phone", phonenumber);
+                map.put("pwd", pwds);
+                map.put("pwd2", pwds);
+                map.put("sex", ""+sexs);
+                map.put("birthday", data);
+                map.put("os", "android");
+                map.put("email", email);
+                postString(0, HttpUrl.RegisterUrl, map);
+                break;
+        }
     }
 }
