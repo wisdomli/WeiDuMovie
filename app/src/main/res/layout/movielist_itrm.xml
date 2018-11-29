@@ -8,8 +8,6 @@
         android:layout_width="126dp"
         android:layout_height="164dp"
         android:layout_marginRight="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginLeft="@dimen/dp_10"
         android:background="@drawable/movieitrm_bck" >
 
         <ImageView
