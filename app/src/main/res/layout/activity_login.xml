@@ -103,6 +103,7 @@
         <TextView
             android:background="@drawable/logshape"
             android:text="登录"
+            android:textColor="#ffffff"
             android:gravity="center"
             android:layout_width="@dimen/dp_310"
             android:layout_height="@dimen/dp_40" />
