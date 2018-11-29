@@ -37,4 +37,5 @@
     <dimen name="dp_125">125dp</dimen>
     <dimen name="dp_85">85dp</dimen>
     <dimen name="dp_312">312dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
 </resources>

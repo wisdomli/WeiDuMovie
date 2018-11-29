@@ -81,7 +81,7 @@ public abstract class AppDelegate implements IDelegate {
 
     // post请求
     public void postString(final int type, String url, Map<String, String> map) {
-        new HttpHelper().get(url, map).rosout(new HttpHelper.HttpLsener() {
+        new HttpHelper().post(url, map).rosout(new HttpHelper.HttpLsener() {
             @Override
             public void suecss(String data) {
                 suecssString(type, data);

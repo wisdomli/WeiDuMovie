@@ -43,4 +43,6 @@ public abstract class BaseActivityPresenter<T extends AppDelegate>extends AppCom
                 .apply();
     }
     public void initWeiGht() {}
+
+
 }

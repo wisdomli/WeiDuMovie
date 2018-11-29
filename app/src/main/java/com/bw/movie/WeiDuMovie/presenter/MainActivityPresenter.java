@@ -67,6 +67,8 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
         btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
         btn_my.setImageResource(R.drawable.com_icon_my_default);
         min_ViewPager.setCurrentItem(0);
+        // ViewPager缓存数据
+        min_ViewPager.setOffscreenPageLimit(3);
     }
 
     private class FragmentPager extends FragmentPagerAdapter {

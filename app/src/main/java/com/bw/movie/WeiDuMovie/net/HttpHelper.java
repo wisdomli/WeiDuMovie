@@ -36,7 +36,7 @@ public class HttpHelper {
 
 
     public HttpHelper post(String url, Map<String, String> map) {
-        mbaseService.get(url, map)
+        mbaseService.post(url, map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);

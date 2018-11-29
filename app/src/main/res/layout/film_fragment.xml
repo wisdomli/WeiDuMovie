@@ -61,7 +61,7 @@
         android:layout_below="@+id/viewpager"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_20"
-        android:background="#999999">
+        android:background="@drawable/home_view">
 
     </View>
 
