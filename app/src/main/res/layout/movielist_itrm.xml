@@ -8,14 +8,17 @@
         android:layout_width="126dp"
         android:layout_height="164dp"
         android:layout_marginRight="@dimen/dp_20"
-        android:background="@drawable/movieitrm_bck">
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:background="@drawable/movieitrm_bck" >
 
         <ImageView
             android:id="@+id/movie_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/moviebackground" />
+            android:src="@drawable/moviebackground"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,7 +41,7 @@
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_toRightOf="@+id/movieitrm_view"
-                android:text="我的前男友"
+                android:text="暂时没有数据"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.activity.MainActivity;
@@ -69,6 +70,46 @@ public class MainActivityPresenter extends AppDelegate implements View.OnClickLi
         min_ViewPager.setCurrentItem(0);
         // ViewPager缓存数据
         min_ViewPager.setOffscreenPageLimit(3);
+        min_ViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+
+            }
+            // 选中状态
+            @Override
+            public void onPageSelected(int i) {
+                if (i == 0) {
+                    setSizeMax(btn_film);
+                    setSizeMin(btn_cinema);
+                    setSizeMin(btn_my);
+                    btn_film.setImageResource(R.drawable.com_icon_film_selected);
+                    btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
+                    btn_my.setImageResource(R.drawable.com_icon_my_default);
+                } else if (i == 1) {
+                    setSizeMin(btn_film);
+                    setSizeMin(btn_my);
+                    setSizeMax(btn_cinema);
+                    btn_cinema.setImageResource(R.drawable.com_icon_cinema_selected);
+                    btn_my.setImageResource(R.drawable.com_icon_my_default);
+                    btn_film.setImageResource(R.drawable.com_icon_film_fault);
+                } else if (i == 2) {
+                    setSizeMin(btn_film);
+                    setSizeMin(btn_cinema);
+                    setSizeMax(btn_my);
+                    btn_my.setImageResource(R.drawable.com_icon_my_selected);
+                    btn_cinema.setImageResource(R.drawable.com_icon_cinema_default);
+                    btn_film.setImageResource(R.drawable.com_icon_film_fault);
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
     }
 
     private class FragmentPager extends FragmentPagerAdapter {

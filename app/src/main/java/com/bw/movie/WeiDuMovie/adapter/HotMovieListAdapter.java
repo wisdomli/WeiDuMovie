@@ -20,24 +20,24 @@ import java.util.List;
  * <p>
  * 2018/11/29
  **/
-public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyHolder>{
+public class HotMovieListAdapter extends RecyclerView.Adapter<HotMovieListAdapter.MyHolder>{
     private List<MovieListBean.ResultBean> list = new ArrayList<>();
     private Context context;
 
-    public MovieListAdapter(Context context) {
+    public HotMovieListAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
-    public MovieListAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public HotMovieListAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = View.inflate(context, R.layout.movielist_itrm,null);
         MyHolder myHolder = new MyHolder(view);
         return myHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieListAdapter.MyHolder myHolder, int i) {
+    public void onBindViewHolder(@NonNull HotMovieListAdapter.MyHolder myHolder, int i) {
         Glide.with(context).load(list.get(i).getImageUrl()).into(myHolder.movie_img);
         myHolder.movie_title.setText(list.get(i).getName());
     }
