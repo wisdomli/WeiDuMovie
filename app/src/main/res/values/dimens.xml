@@ -45,4 +45,5 @@
     <dimen name="dp_34">34dp</dimen>
     <dimen name="dp_240">240dp</dimen>
     <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_105">105dp</dimen>
 </resources>

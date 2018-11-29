@@ -19,7 +19,7 @@
             android:layout_marginTop="@dimen/dp_145"
             android:gravity="center"
             android:layout_gravity="center"
-            android:id="@+id/my_phone"
+            android:id="@+id/login_phone"
             android:backgroundTint="#FFFFFF"
             android:hint="手机号"
             android:textColor="#ffffff"
@@ -41,7 +41,7 @@
             android:layout_marginTop="@dimen/dp_35"
             android:gravity="center"
             android:layout_gravity="center"
-            android:id="@+id/my_password"
+            android:id="@+id/login_password"
             android:backgroundTint="#FFFFFF"
             android:hint="登录密码"
             android:textColor="#ffffff"
@@ -96,6 +96,7 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/login_lg"
         android:layout_marginTop="@dimen/dp_70"
         android:layout_marginLeft="@dimen/dp_25"
         android:layout_width="match_parent"

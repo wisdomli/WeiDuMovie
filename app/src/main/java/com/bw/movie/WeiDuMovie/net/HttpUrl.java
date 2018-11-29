@@ -11,4 +11,5 @@ public class HttpUrl {
     public static String ShowingUpUrl ="movieApi/movie/v1/findReleaseMovieList";
     public static String ShowSoonUrl ="movieApi/movie/v1/findComingSoonMovieList";
     public static String RegisterUrl= "movieApi/user/v1/registerUser";
+    public static String LoginUrl= "movieApi/user/v1/login";
 }

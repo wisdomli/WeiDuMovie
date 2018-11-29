@@ -10,9 +10,12 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bw.movie.WeiDuMovie.R;
+import com.bw.movie.WeiDuMovie.activity.RegActivity;
 import com.bw.movie.WeiDuMovie.aestoolkit.EncryptUtil;
+import com.bw.movie.WeiDuMovie.bean.RegBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +30,7 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
     private int sexs;
 
     private RelativeLayout Reg_btn;
+    private EditText repeat_pwd;
 
     @Override
     public int getLayoutId() {
@@ -36,6 +40,7 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
     @Override
     public void initData() {
         super.initData();
+        repeat_pwd = get(R.id.repeat_pwd);
         my_user_name = get(R.id.my_user_name);
         my_user_sex = get(R.id.my_user_sex);
         my_user_data = get(R.id.my_user_data);
@@ -49,7 +54,17 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
     @Override
     public void suecssString(int type, String data) {
         super.suecssString(type, data);
-        Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
+        Gson gson = new Gson();
+        RegBean regBean = gson.fromJson(data, RegBean.class);
+        String status = regBean.getStatus();
+        String message = regBean.getMessage();
+        if (status.equals(0000)){
+            Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+            ((RegActivity)context).finish();
+        }else {
+            Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+        }
+        //Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
     }
 
     private Context context;
@@ -65,27 +80,28 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
         switch (view.getId()) {
             case R.id.Reg_btn:
                 // 获取输入
-                String pwd = my_user_pwd.getText().toString();
+                String pwd = my_user_pwd.getText().toString().trim();
+                String repeat_pwd = this.repeat_pwd.getText().toString();
+                String repeat_password = EncryptUtil.encrypt(repeat_pwd);
                 // 进行密码加密
-                String pwds = EncryptUtil.encrypt(pwd);
-                String name = my_user_name.getText().toString();
-                String sex = my_user_sex.getText().toString();
+                String password = EncryptUtil.encrypt(pwd);
+                String name = my_user_name.getText().toString().trim();
+                String sex = my_user_sex.getText().toString().trim();
                 if ("男".equals(sex)) {
                     sexs = 1;
                 } else if ("女".equals(sex)) {
                     sexs =2;
                 }
-                String data = my_user_data.getText().toString();
-                String phonenumber = my_user_phonenumber.getText().toString();
-                String email = my_user_email.getText().toString();
+                String data = my_user_data.getText().toString().trim();
+                String phonenumber = my_user_phonenumber.getText().toString().trim();
+                String email = my_user_email.getText().toString().trim();
 
                 map.put("nickName", name);
                 map.put("phone", phonenumber);
-                map.put("pwd", pwds);
-                map.put("pwd2", pwds);
+                map.put("pwd", password);
+                map.put("pwd2", repeat_password);
                 map.put("sex", ""+sexs);
                 map.put("birthday", data);
-                map.put("os", "android");
                 map.put("email", email);
                 postString(0, HttpUrl.RegisterUrl, map);
                 break;
