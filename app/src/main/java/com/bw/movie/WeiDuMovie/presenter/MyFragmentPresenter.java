@@ -8,7 +8,11 @@ import android.widget.RelativeLayout;
 
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.activity.LoginActivity;
+import com.bw.movie.WeiDuMovie.activity.MyFollowActivity;
+import com.bw.movie.WeiDuMovie.activity.MyLatesteditionActivity;
 import com.bw.movie.WeiDuMovie.activity.MyMessageActivity;
+import com.bw.movie.WeiDuMovie.activity.MyRecordActivity;
+import com.bw.movie.WeiDuMovie.activity.MyfeedbackActivity;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 
 /**
@@ -20,6 +24,10 @@ public class MyFragmentPresenter extends AppDelegate implements View.OnClickList
 
     private ImageView image_head;
     private RelativeLayout my_message;
+    private RelativeLayout my_follow;
+    private RelativeLayout my_record;
+    private RelativeLayout my_feedback;
+    private RelativeLayout my_Latestedition;
 
     @Override
     public int getLayoutId() {
@@ -31,8 +39,17 @@ public class MyFragmentPresenter extends AppDelegate implements View.OnClickList
         super.initData();
         image_head = get(R.id.image_head);
         my_message = get(R.id.my_message);
-        setOnClikLisener(this,R.id.my_message);
-        setOnClikLisener(this,R.id.image_head);
+        my_follow = get(R.id.my_follow);
+        my_record = get(R.id.my_record);
+        my_Latestedition = get(R.id.my_Latestedition);
+        my_feedback = get(R.id.my_feedback);
+        setOnClikLisener(this,
+                R.id.my_follow,
+                R.id.my_feedback,
+                R.id.my_Latestedition,
+                R.id.my_message,
+                R.id.image_head,
+                R.id.my_record);
     }
 
 
@@ -46,14 +63,37 @@ public class MyFragmentPresenter extends AppDelegate implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            //点击头像进行登录
             case R.id.image_head:
                 Intent intent = new Intent(context, LoginActivity.class);
                 context.startActivity(intent);
                 break;
+                //我的信息
             case R.id.my_message:
                 Intent messageintent = new Intent(context, MyMessageActivity.class);
                 context.startActivity(messageintent);
                 break;
+                //我的关注
+            case R.id.my_follow:
+                Intent follow = new Intent(context, MyFollowActivity.class);
+                context.startActivity(follow);
+                break;
+                //购票记录
+            case R.id.my_record:
+                Intent record = new Intent(context, MyRecordActivity.class);
+                context.startActivity(record);
+                break;
+                //意见反馈
+            case R.id.my_feedback:
+                Intent feedback = new Intent(context, MyfeedbackActivity.class);
+                context.startActivity(feedback);
+                break;
+                //最新版本
+            case R.id.my_Latestedition:
+                Intent Latestedition = new Intent(context, MyLatesteditionActivity.class);
+                context.startActivity(Latestedition);
+                break;
+
         }
     }
 }

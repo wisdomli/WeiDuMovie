@@ -65,36 +65,46 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_86">
-                <ImageView
-                    android:layout_marginTop="@dimen/dp_13"
-                    android:id="@+id/follow"
-                    android:src="@drawable/my_icon_attention_default"
-                    android:layout_width="@dimen/dp_24"
-                    android:layout_marginLeft="@dimen/dp_45"
-                    android:layout_height="@dimen/dp_24" />
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_below="@+id/follow"
-                    android:text="我的关注"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:layout_marginLeft="@dimen/dp_30"
+                <RelativeLayout
+                    android:id="@+id/my_follow"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:layout_marginTop="@dimen/dp_13"
-                    android:id="@+id/rccord"
-                    android:src="@drawable/my_icon_rccord_default"
-                    android:layout_width="@dimen/dp_24"
-                    android:layout_marginLeft="@dimen/dp_155"
-                    android:layout_height="@dimen/dp_24" />
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_below="@+id/rccord"
-                    android:text="购票记录"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:layout_marginLeft="@dimen/dp_140"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginTop="@dimen/dp_13"
+                        android:id="@+id/follow"
+                        android:src="@drawable/my_icon_attention_default"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_marginLeft="@dimen/dp_45"
+                        android:layout_height="@dimen/dp_24" />
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_below="@+id/follow"
+                        android:text="我的关注"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/my_record"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginTop="@dimen/dp_13"
+                        android:id="@+id/rccord"
+                        android:src="@drawable/my_icon_rccord_default"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_marginLeft="@dimen/dp_155"
+                        android:layout_height="@dimen/dp_24" />
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_below="@+id/rccord"
+                        android:text="购票记录"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_140"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
         <RelativeLayout
@@ -109,36 +119,46 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_86">
-                <ImageView
-                    android:layout_marginTop="@dimen/dp_13"
-                    android:id="@+id/feedback"
-                    android:src="@drawable/my_icon_feedback_default"
-                    android:layout_width="@dimen/dp_24"
-                    android:layout_marginLeft="@dimen/dp_45"
-                    android:layout_height="@dimen/dp_24" />
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_below="@+id/feedback"
-                    android:text="意见反馈"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:layout_marginLeft="@dimen/dp_30"
+                <RelativeLayout
+                    android:id="@+id/my_feedback"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:layout_marginTop="@dimen/dp_13"
-                    android:id="@+id/version"
-                    android:src="@drawable/my_icon_version_default"
-                    android:layout_width="@dimen/dp_24"
-                    android:layout_marginLeft="@dimen/dp_155"
-                    android:layout_height="@dimen/dp_24" />
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_below="@+id/version"
-                    android:text="最新版本"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:layout_marginLeft="@dimen/dp_140"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginTop="@dimen/dp_13"
+                        android:id="@+id/feedback"
+                        android:src="@drawable/my_icon_feedback_default"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_marginLeft="@dimen/dp_45"
+                        android:layout_height="@dimen/dp_24" />
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_below="@+id/feedback"
+                        android:text="意见反馈"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/my_Latestedition"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginTop="@dimen/dp_13"
+                        android:id="@+id/version"
+                        android:src="@drawable/my_icon_version_default"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_marginLeft="@dimen/dp_155"
+                        android:layout_height="@dimen/dp_24" />
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_below="@+id/version"
+                        android:text="最新版本"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_140"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
