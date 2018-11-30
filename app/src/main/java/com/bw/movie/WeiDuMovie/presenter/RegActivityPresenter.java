@@ -58,7 +58,7 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
         RegBean regBean = gson.fromJson(data, RegBean.class);
         String status = regBean.getStatus();
         String message = regBean.getMessage();
-        if (status.equals(0000)){
+        if (status.equals("0000")){
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
             ((RegActivity)context).finish();
         }else {
@@ -82,9 +82,10 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
                 // 获取输入
                 String pwd = my_user_pwd.getText().toString().trim();
                 String repeat_pwd = this.repeat_pwd.getText().toString();
-                String repeat_password = EncryptUtil.encrypt(repeat_pwd);
                 // 进行密码加密
+                String repeat_password = EncryptUtil.encrypt(repeat_pwd);
                 String password = EncryptUtil.encrypt(pwd);
+
                 String name = my_user_name.getText().toString().trim();
                 String sex = my_user_sex.getText().toString().trim();
                 if ("男".equals(sex)) {

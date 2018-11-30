@@ -64,7 +64,7 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
         RegBean regBean = gson.fromJson(data, RegBean.class);
         String status = regBean.getStatus();
         String message = regBean.getMessage();
-        if (status.equals(0000)){
+        if (("0000").equals(status)){
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
@@ -80,9 +80,10 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
                 break;
             case R.id.login_lg:
                 String login_name = login_phone.getText().toString().trim();
-                String login_password = this.login_password.getText().toString().trim();
+                String login_pwd = this.login_password.getText().toString().trim();
+                String pwd = EncryptUtil.encrypt(login_pwd);
                 hashMap.put("phone",login_name);
-                hashMap.put("pwd",login_password);
+                hashMap.put("pwd",pwd);
                 postString(0, HttpUrl.LoginUrl,hashMap);
                 break;
         }
