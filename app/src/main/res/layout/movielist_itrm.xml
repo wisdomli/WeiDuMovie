@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="126dp"
         android:layout_height="164dp"
-        android:layout_marginRight="@dimen/dp_20"
-        android:background="@drawable/movieitrm_bck"
-        >
+        android:layout_marginRight="@dimen/dp_24"
+        android:background="@drawable/movieitrm_bck">
+
 
         <ImageView
-
             android:id="@+id/movie_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            />
+            android:background="@drawable/movieitrm_bck"
+            android:scaleType="fitXY" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,9 +43,8 @@
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
 
-
         </RelativeLayout>
 
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
