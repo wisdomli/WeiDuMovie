@@ -1,6 +1,7 @@
 package com.bw.movie.WeiDuMovie.presenter;
 
 import android.content.Context;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -30,6 +31,7 @@ public class FilmFragmentPresenter extends AppDelegate {
     private ShowSoonMovieListAdapter showSoonMovieListAdapter;
     private IsshowingUpMovieListAdapter isshowingUpMovieListAdapter;
     private RecyclerCoverFlow home_viewpager;
+    private TabLayout home_TabLayout_view;
 
 
     @Override
@@ -57,11 +59,11 @@ public class FilmFragmentPresenter extends AppDelegate {
         // 正在热映RecyclerView
         RecyclerView Isshowingup_RecyclerView = get(R.id.Isshowingup_RecyclerView);
         // 获取布局管理器
-        LinearLayoutManager  linearLayoutManager = new LinearLayoutManager(context);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        LinearLayoutManager  linearLayoutManager2 = new LinearLayoutManager(context);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(context);
         linearLayoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
-        LinearLayoutManager  linearLayoutManager3 = new LinearLayoutManager(context);
+        LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(context);
         linearLayoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
         // 适配器
         movieListAdapter = new HotMovieListAdapter(context);
@@ -78,13 +80,16 @@ public class FilmFragmentPresenter extends AppDelegate {
 
         //使用RecyclerView，自定义LayoutManager实现旋转木马相册效果
         home_viewpager = (RecyclerCoverFlow) get(R.id.home_viewpager);
-       // home_viewpager.setFlatFlow(true); //平面滚动
-
+        // home_viewpager.setFlatFlow(true); //平面滚动
+         home_TabLayout_view = (TabLayout)get(R.id.home_TabLayout_view);
         home_viewpager.setAdapter(movieListAdapter);
+        home_viewpager.scrollToPosition(3);
+        home_viewpager.smoothScrollToPosition(3);
         home_viewpager.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
             @Override
             public void onItemSelected(int position) {
-//                home_viewpager.getLayoutManager().getItemCount();
+                int itemCount = home_viewpager.getLayoutManager().getItemCount();
+
             }
         });
 
