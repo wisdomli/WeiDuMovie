@@ -58,4 +58,7 @@
     <dimen name="dp_285">285dp</dimen>
     <dimen name="dp_345">345dp</dimen>
     <dimen name="dp_355">355dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_98">98dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
 </resources>
