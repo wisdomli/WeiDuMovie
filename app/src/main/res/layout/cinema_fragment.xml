@@ -53,14 +53,17 @@
             android:layout_height="@dimen/dp_40"
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
+            android:background="@drawable/cinema_btn_f"
             android:text="推荐影院" />
 
         <Button
+            android:id="@+id/btn_nearby"
             android:layout_width="@dimen/dp_100"
             android:layout_height="@dimen/dp_40"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="32dp"
             android:layout_weight="1"
+            android:background="@drawable/cinema_btn_f"
             android:text="附近影院" />
     </LinearLayout>
 

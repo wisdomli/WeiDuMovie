@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.bean.MovieListBean;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class HotMovieListAdapter extends RecyclerView.Adapter<HotMovieListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HotMovieListAdapter.MyHolder myHolder, int i) {
-        Glide.with(context).load(list.get(i).getImageUrl()).into(myHolder.movie_img);
+        myHolder.movie_img.setImageURI(list.get(i).getImageUrl());
         myHolder.movie_title.setText(list.get(i).getName());
     }
 
@@ -53,7 +54,7 @@ public class HotMovieListAdapter extends RecyclerView.Adapter<HotMovieListAdapte
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        ImageView movie_img;
+        SimpleDraweeView movie_img;
         TextView movie_title;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
