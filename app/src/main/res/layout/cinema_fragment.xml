@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/Cinema_data_image"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/cinemadetail_icon_location_default" />
+
+    <TextView
+        android:id="@+id/Cinema_data_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_06"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_toRightOf="@+id/Cinema_data_image"
+        android:text="北京"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+
+    <RelativeLayout
+        android:id="@+id/Cinema_search"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_24"
+        android:background="@drawable/search_bck"
+        android:padding="@dimen/dp_06">
+
+        <ImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:src="@drawable/com_icon_search_default" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/Cinema_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Cinema_search"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_Recommend"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:text="推荐影院" />
+
+        <Button
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="32dp"
+            android:layout_weight="1"
+            android:text="附近影院" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/Cinema_ViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/Cinema_btn"
+        android:layout_marginTop="@dimen/dp_10">
+
+    </android.support.v4.view.ViewPager>
+
+
+</RelativeLayout>
