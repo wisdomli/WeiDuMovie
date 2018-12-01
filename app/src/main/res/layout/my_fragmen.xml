@@ -3,163 +3,162 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
-        android:background="@drawable/beijing"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_220">
+        android:layout_height="@dimen/dp_220"
+        android:background="@drawable/beijing">
+
         <ImageView
-            android:layout_marginTop="@dimen/dp_24"
-            android:layout_marginLeft="@dimen/dp_24"
-            android:src="@drawable/my_icon_remind_default"
             android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24" />
+            android:layout_height="@dimen/dp_24"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_24"
+            android:src="@drawable/my_icon_remind_default" />
+
         <ImageView
             android:id="@+id/image_head"
+            android:layout_width="@dimen/dp_72"
+            android:layout_height="@dimen/dp_72"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_70"
-            android:src="@mipmap/touxiang"
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_72" />
+            android:src="@mipmap/touxiang" />
+        <TextView
+            android:id="@+id/user"
+            android:layout_marginTop="160dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:text="温浩"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
-            android:layout_centerHorizontal="true"
             android:id="@+id/frist"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_86"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/dp_24"
             android:layout_marginTop="@dimen/dp_10"
-            android:background="@drawable/my_shape"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_86" >
+            android:background="@drawable/my_shape">
+
             <RelativeLayout
                 android:id="@+id/my_message"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_86">
+
                 <ImageView
-                    android:layout_marginTop="@dimen/dp_13"
                     android:id="@+id/message"
-                    android:src="@drawable/my_icon_messiage_default"
                     android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
                     android:layout_marginLeft="@dimen/dp_45"
-                    android:layout_height="@dimen/dp_24" />
+                    android:layout_marginTop="@dimen/dp_13"
+                    android:src="@drawable/my_icon_messiage_default" />
+
                 <TextView
-                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/message"
-                    android:text="我的信息"
-                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/dp_30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="我的信息" />
             </RelativeLayout>
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/frist"
             android:id="@+id/two"
-            android:layout_marginLeft="@dimen/dp_24"
-            android:layout_marginTop="@dimen/dp_10"
-            android:background="@drawable/my_shape"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_86" >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_86">
-                <RelativeLayout
-                    android:id="@+id/my_follow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginTop="@dimen/dp_13"
-                        android:id="@+id/follow"
-                        android:src="@drawable/my_icon_attention_default"
-                        android:layout_width="@dimen/dp_24"
-                        android:layout_marginLeft="@dimen/dp_45"
-                        android:layout_height="@dimen/dp_24" />
-                    <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_below="@+id/follow"
-                        android:text="我的关注"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:layout_marginLeft="@dimen/dp_30"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/my_record"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginTop="@dimen/dp_13"
-                        android:id="@+id/rccord"
-                        android:src="@drawable/my_icon_rccord_default"
-                        android:layout_width="@dimen/dp_24"
-                        android:layout_marginLeft="@dimen/dp_155"
-                        android:layout_height="@dimen/dp_24" />
-                    <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_below="@+id/rccord"
-                        android:text="购票记录"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:layout_marginLeft="@dimen/dp_140"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
-            </RelativeLayout>
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="@dimen/dp_86"
+            android:layout_below="@+id/frist"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/two"
-            android:id="@+id/three"
             android:layout_marginLeft="@dimen/dp_24"
             android:layout_marginTop="@dimen/dp_10"
-            android:background="@drawable/my_shape"
+            android:background="@drawable/my_shape">
+
+            <ImageView
+                android:id="@+id/follow"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_45"
+                android:layout_marginTop="@dimen/dp_13"
+                android:src="@drawable/my_icon_attention_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/follow"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="我的关注" />
+
+            <ImageView
+                android:id="@+id/my_record"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_155"
+                android:layout_marginTop="@dimen/dp_13"
+                android:src="@drawable/my_icon_rccord_default" />
+
+            <TextView
+                android:layout_below="@+id/my_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_140"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="购票记录" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/three"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_86" >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_86">
-                <RelativeLayout
-                    android:id="@+id/my_feedback"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginTop="@dimen/dp_13"
-                        android:id="@+id/feedback"
-                        android:src="@drawable/my_icon_feedback_default"
-                        android:layout_width="@dimen/dp_24"
-                        android:layout_marginLeft="@dimen/dp_45"
-                        android:layout_height="@dimen/dp_24" />
-                    <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_below="@+id/feedback"
-                        android:text="意见反馈"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:layout_marginLeft="@dimen/dp_30"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/my_Latestedition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginTop="@dimen/dp_13"
-                        android:id="@+id/version"
-                        android:src="@drawable/my_icon_version_default"
-                        android:layout_width="@dimen/dp_24"
-                        android:layout_marginLeft="@dimen/dp_155"
-                        android:layout_height="@dimen/dp_24" />
-                    <TextView
-                        android:layout_centerVertical="true"
-                        android:layout_below="@+id/version"
-                        android:text="最新版本"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:layout_marginLeft="@dimen/dp_140"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
-            </RelativeLayout>
+            android:layout_height="@dimen/dp_86"
+            android:layout_below="@+id/two"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/my_shape">
+
+            <ImageView
+                android:id="@+id/feedback"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_45"
+                android:layout_marginTop="@dimen/dp_13"
+                android:src="@drawable/my_icon_feedback_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/feedback"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="意见反馈" />
+
+            <ImageView
+                android:id="@+id/version"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_155"
+                android:layout_marginTop="@dimen/dp_13"
+                android:src="@drawable/my_icon_version_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/version"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_140"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="最新版本" />
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

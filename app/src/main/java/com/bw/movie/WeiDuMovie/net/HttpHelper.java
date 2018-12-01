@@ -43,6 +43,14 @@ public class HttpHelper {
         return this;
     }
 
+    public HttpHelper post1(String url, Map<String, String> map,Map<String,String> mapHead) {
+        mbaseService.post1(url, map,mapHead)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+
 
     private Observer observer = new Observer<ResponseBody>() {
 

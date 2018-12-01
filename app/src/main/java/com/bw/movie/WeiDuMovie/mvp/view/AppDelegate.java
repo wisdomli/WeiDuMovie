@@ -94,6 +94,20 @@ public abstract class AppDelegate implements IDelegate {
         });
     }
 
+    public void postString1(final int type,String url,Map<String,String> map,Map<String,String> mapHead){
+        new HttpHelper().post1(url,map,mapHead).rosout(new HttpHelper.HttpLsener() {
+            @Override
+            public void suecss(String data) {
+                suecssString(type, data);
+            }
+
+            @Override
+            public void erorr(String erorr) {
+                erorrString(erorr);
+            }
+        });
+    }
+
 
     public void suecssString(int type, String data) {
     }

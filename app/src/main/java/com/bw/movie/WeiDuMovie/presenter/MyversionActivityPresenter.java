@@ -7,7 +7,7 @@ import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
  * 作者：温浩
  * 时间：2018/11/30
  */
-public class MyLatesteditionActivityPresenter extends AppDelegate{
+public class MyversionActivityPresenter extends AppDelegate{
     @Override
     public int getLayoutId() {
         return R.layout.activity_my_latesedition;

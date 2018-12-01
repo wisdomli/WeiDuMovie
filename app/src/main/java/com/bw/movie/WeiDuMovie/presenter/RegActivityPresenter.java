@@ -26,11 +26,10 @@ import java.util.Map;
  */
 public class RegActivityPresenter extends AppDelegate implements View.OnClickListener {
     private Map<String, String> map = new HashMap<>();
-    private EditText my_user_name, my_user_sex, my_user_data, my_user_phonenumber, my_user_email, my_user_pwd;
+    private EditText my_user_name, my_user_sex, my_user_data, my_user_phonenumber, my_user_email, my_user_pwd,repeat_pwd;
     private int sexs;
 
     private RelativeLayout Reg_btn;
-    private EditText repeat_pwd;
 
     @Override
     public int getLayoutId() {
@@ -64,11 +63,9 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
         }else {
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
         }
-        //Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
     }
 
     private Context context;
-
     @Override
     public void getContext(Context context) {
         super.getContext(context);
@@ -80,12 +77,6 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
         switch (view.getId()) {
             case R.id.Reg_btn:
                 // 获取输入
-                String pwd = my_user_pwd.getText().toString().trim();
-                String repeat_pwd = this.repeat_pwd.getText().toString();
-                // 进行密码加密
-                String repeat_password = EncryptUtil.encrypt(repeat_pwd);
-                String password = EncryptUtil.encrypt(pwd);
-
                 String name = my_user_name.getText().toString().trim();
                 String sex = my_user_sex.getText().toString().trim();
                 if ("男".equals(sex)) {
@@ -96,15 +87,35 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
                 String data = my_user_data.getText().toString().trim();
                 String phonenumber = my_user_phonenumber.getText().toString().trim();
                 String email = my_user_email.getText().toString().trim();
-
-                map.put("nickName", name);
-                map.put("phone", phonenumber);
-                map.put("pwd", password);
-                map.put("pwd2", repeat_password);
-                map.put("sex", ""+sexs);
-                map.put("birthday", data);
-                map.put("email", email);
-                postString(0, HttpUrl.RegisterUrl, map);
+                String pwd = my_user_pwd.getText().toString().trim();
+                String repeat_pwd = this.repeat_pwd.getText().toString();
+                // 进行密码加密
+                String password = EncryptUtil.encrypt(pwd);
+                String repeat_password = EncryptUtil.encrypt(repeat_pwd);
+                if (name.isEmpty()){
+                    Toast.makeText(context,"请输入昵称",Toast.LENGTH_SHORT).show();
+                }else if(sex.isEmpty()){
+                    Toast.makeText(context,"请输入性别",Toast.LENGTH_SHORT).show();
+                }else if (data.isEmpty()){
+                    Toast.makeText(context,"请输入日期",Toast.LENGTH_SHORT).show();
+                }else if (phonenumber.isEmpty()){
+                    Toast.makeText(context,"请输入手机号",Toast.LENGTH_SHORT).show();
+                }else if (email.isEmpty()){
+                    Toast.makeText(context,"请输入邮箱",Toast.LENGTH_SHORT).show();
+                }else if (pwd.isEmpty()){
+                    Toast.makeText(context,"请输入登录密码",Toast.LENGTH_SHORT).show();
+                }else if (repeat_pwd.isEmpty()){
+                    Toast.makeText(context,"再次确认密码",Toast.LENGTH_SHORT).show();
+                }else if(!name.isEmpty()&&!sex.isEmpty()&&!data.isEmpty()&&!phonenumber.isEmpty()&&!email.isEmpty()&&!pwd.isEmpty()&&!repeat_password.isEmpty()){
+                    map.put("nickName", name);
+                    map.put("phone", phonenumber);
+                    map.put("pwd", password);
+                    map.put("pwd2", repeat_password);
+                    map.put("sex", ""+sexs);
+                    map.put("birthday", data);
+                    map.put("email", email);
+                    postString(0, HttpUrl.RegisterUrl, map);
+                }
                 break;
         }
     }
