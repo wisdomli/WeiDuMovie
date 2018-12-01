@@ -13,5 +13,5 @@ public class HttpUrl {
     public static String RegisterUrl= "movieApi/user/v1/registerUser";
     public static String LoginUrl= "movieApi/user/v1/login";
     public static String CinemasUrl = "movieApi/cinema/v1/findRecommendCinemas";
-
+    public static String FeedBackUrl = "movieApi/tool/v1/verify/recordFeedBack";
 }
