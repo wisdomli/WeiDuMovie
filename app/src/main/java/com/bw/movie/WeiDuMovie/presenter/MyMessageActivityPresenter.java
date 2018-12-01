@@ -76,7 +76,7 @@ public class MyMessageActivityPresenter extends AppDelegate implements View.OnCl
         String nickName = context.getSharedPreferences("config", 0).getString("nickName", "").toString();
         int sex = context.getSharedPreferences("config", 0).getInt("sex", 0);
         long birthday = context.getSharedPreferences("config", 0).getLong("birthday", 0);
-        //获取生日
+       /* //获取生日
         if (birthday!=0){
             my_birthday.setText("");
         }else {
@@ -93,7 +93,7 @@ public class MyMessageActivityPresenter extends AppDelegate implements View.OnCl
             my_email.setText("");
         }else {
             my_email.setText(email);
-        }
+        }*/
         //获取用户名
         if (nickName.isEmpty()){
             nickName_name.setText("");

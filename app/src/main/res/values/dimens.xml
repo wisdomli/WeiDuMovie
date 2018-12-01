@@ -61,4 +61,8 @@
     <dimen name="dp_12">12dp</dimen>
     <dimen name="dp_98">98dp</dimen>
     <dimen name="dp_14">14dp</dimen>
+    <dimen name="dp_497">497dp</dimen>
+    <dimen name="dp_152">152dp</dimen>
+    <dimen name="dp_235">235dp</dimen>
+    <dimen name="dp_190">190dp</dimen>
 </resources>
