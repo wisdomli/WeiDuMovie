@@ -23,9 +23,11 @@ public interface BaseService {
     Observable<ResponseBody> get(@Url String url, @QueryMap Map<String,String> map);
     @FormUrlEncoded
     @POST
+    Observable<ResponseBody> post1(@Url String url, @FieldMap Map<String, String> map, @HeaderMap Map<String,String> mapHead);
+    @FormUrlEncoded
+    @POST
     @Headers({
             "ak:0110010010000",
             "Content-Type:application/x-www-form-urlencoded"})
     Observable<ResponseBody> post(@Url String url, @FieldMap Map<String,String> map);
-
 }

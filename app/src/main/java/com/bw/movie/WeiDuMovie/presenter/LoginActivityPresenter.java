@@ -10,8 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.WeiDuMovie.R;
+import com.bw.movie.WeiDuMovie.activity.LoginActivity;
 import com.bw.movie.WeiDuMovie.activity.RegActivity;
 import com.bw.movie.WeiDuMovie.aestoolkit.EncryptUtil;
+import com.bw.movie.WeiDuMovie.bean.LoginBean;
 import com.bw.movie.WeiDuMovie.bean.RegBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
@@ -31,6 +33,7 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
     private EditText login_password;
     private RelativeLayout login_lg;
     private Map<String, String> hashMap;
+    private LoginBean logBean;
 
     @Override
     public int getLayoutId() {
@@ -61,14 +64,33 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
     public void suecssString(int type, String data) {
         super.suecssString(type, data);
         Gson gson = new Gson();
-        RegBean regBean = gson.fromJson(data, RegBean.class);
-        String status = regBean.getStatus();
-        String message = regBean.getMessage();
-        if (("0000").equals(status)){
+        logBean = gson.fromJson(data, LoginBean.class);
+        String status = logBean.getStatus();
+        String message = logBean.getMessage();
+        if (status.equals("0000")){
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+            context.getSharedPreferences("config",0).edit()
+                    .putString("nickName",logBean.getResult().getUserInfo().getNickName())
+                    .putInt("sex",logBean.getResult().getUserInfo().getSex())
+                    .putLong("birthday",logBean.getResult().getUserInfo().getBirthday())
+                    .putString("phone",logBean.getResult().getUserInfo().getPhone())
+                    .putString("email",logBean.getResult().getUserInfo().getEmail())
+                    .putString("sessionId",logBean.getResult().getSessionId())
+                    .putInt("userId",logBean.getResult().getUserId())
+                    .putBoolean("isLogin",true)
+                    .commit();
+            Log.i("aaa",logBean.getResult().getUserInfo().getBirthday()+"");
+            ((LoginActivity)context).finish();
         }else {
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    @Override
+    public void erorrString(String erorr) {
+        super.erorrString(erorr);
+        Toast.makeText(context,erorr,Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -84,6 +106,7 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
                 String pwd = EncryptUtil.encrypt(login_pwd);
                 hashMap.put("phone",login_name);
                 hashMap.put("pwd",pwd);
+
                 postString(0, HttpUrl.LoginUrl,hashMap);
                 break;
         }

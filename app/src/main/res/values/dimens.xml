@@ -52,4 +52,10 @@
     <dimen name="dp_148">148dp</dimen>
     <dimen name="dp_80">80dp</dimen>
     <dimen name="dp_295">295dp</dimen>
+    <dimen name="dp_180">180dp</dimen>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_300">300dp</dimen>
+    <dimen name="dp_285">285dp</dimen>
+    <dimen name="dp_345">345dp</dimen>
+    <dimen name="dp_355">355dp</dimen>
 </resources>

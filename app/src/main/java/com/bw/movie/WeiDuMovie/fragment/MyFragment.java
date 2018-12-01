@@ -13,4 +13,10 @@ public class MyFragment extends BaseFragmentPresenter<MyFragmentPresenter>{
     public Class<MyFragmentPresenter> getClassDelegate() {
         return MyFragmentPresenter.class;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        delegate.onResume();
+    }
 }

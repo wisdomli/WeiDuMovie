@@ -64,10 +64,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/nickName"
                     android:textSize="14sp"
                     android:layout_marginLeft="@dimen/dp_245"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="×××"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
@@ -90,10 +91,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/my_sex"
                     android:textSize="14sp"
                     android:layout_marginLeft="@dimen/dp_245"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="×××"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
@@ -111,10 +113,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/my_birthday"
                     android:textSize="14sp"
                     android:layout_marginLeft="@dimen/dp_245"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="×××"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
@@ -143,10 +146,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/phone"
                     android:textSize="14sp"
-                    android:layout_marginLeft="245dp"
+                    android:layout_marginLeft="@dimen/dp_180"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="×××"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
@@ -167,10 +171,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/my_email"
                     android:textSize="14sp"
                     android:layout_marginLeft="@dimen/dp_245"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="×××"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
@@ -207,9 +212,23 @@
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/back_login"
+            android:background="@drawable/logshape"
+            android:text="退出登录"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_310"
+            android:layout_height="@dimen/dp_40" />
+    </RelativeLayout>
     <ImageView
         android:id="@+id/image_back"
-        android:layout_marginTop="@dimen/dp_90"
+        android:layout_marginTop="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_24"
         android:src="@drawable/com_icon_my_default_back"
         android:layout_width="@dimen/dp_60"
