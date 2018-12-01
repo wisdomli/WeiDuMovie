@@ -66,7 +66,7 @@
                 <TextView
                     android:id="@+id/nickName"
                     android:textSize="14sp"
-                    android:layout_marginLeft="@dimen/dp_245"
+                    android:layout_marginLeft="@dimen/dp_235"
                     android:layout_marginTop="@dimen/dp_10"
                     android:text=""
                     android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
                 <TextView
                     android:id="@+id/phone"
                     android:textSize="14sp"
-                    android:layout_marginLeft="@dimen/dp_180"
+                    android:layout_marginLeft="@dimen/dp_190"
                     android:layout_marginTop="@dimen/dp_10"
                     android:text=""
                     android:layout_width="wrap_content"

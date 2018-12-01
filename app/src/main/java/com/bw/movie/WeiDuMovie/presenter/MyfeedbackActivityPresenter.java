@@ -1,6 +1,7 @@
 package com.bw.movie.WeiDuMovie.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -8,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bw.movie.WeiDuMovie.R;
-import com.bw.movie.WeiDuMovie.activity.MyMessageActivity;
+import com.bw.movie.WeiDuMovie.activity.FeedbacksuccessActivity;
 import com.bw.movie.WeiDuMovie.activity.MyfeedbackActivity;
 import com.bw.movie.WeiDuMovie.bean.FeedbackBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
@@ -16,7 +17,6 @@ import com.bw.movie.WeiDuMovie.net.HttpUrl;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 作者：温浩
@@ -45,6 +45,8 @@ public class MyfeedbackActivityPresenter extends AppDelegate{
         message = feedbackBean.getMessage();
         if (status.equals("0000")){
             Toast.makeText(context, message,Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, FeedbacksuccessActivity.class);
+            context.startActivity(intent);
         }else {
             Toast.makeText(context, message,Toast.LENGTH_SHORT).show();
         }
@@ -61,14 +63,19 @@ public class MyfeedbackActivityPresenter extends AppDelegate{
         submission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //获取保存的id以及登录凭证
                 String sessionId = context.getSharedPreferences("config", 0).getString("sessionId", "").toString();
                 int userId = context.getSharedPreferences("config", 0).getInt("userId", 0);
-                String context = edit_context.getText().toString();
-                hashMap.put("content",context);
-                hashMapHead.put("sessionId",sessionId);
-                hashMapHead.put("userId",userId+"");
-                hashMapHead.put("Content-Type","application/x-www-form-urlencoded");
-                postString1(0,HttpUrl.FeedBackUrl,hashMap,hashMapHead);
+                String context1 = edit_context.getText().toString().trim();
+                if (context1.isEmpty()){
+                    Toast.makeText(context,"请输入内容",Toast.LENGTH_SHORT).show();
+                }else if (!context1.isEmpty()){
+                    hashMap.put("content",context1);
+                    hashMapHead.put("sessionId",sessionId);
+                    hashMapHead.put("userId",userId+"");
+                    hashMapHead.put("Content-Type","application/x-www-form-urlencoded");
+                    postString1(0,HttpUrl.FeedBackUrl,hashMap,hashMapHead);
+                }
             }
         });
         image_back.setOnClickListener(new View.OnClickListener() {

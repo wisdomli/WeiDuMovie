@@ -24,6 +24,7 @@
         <activity android:name=".activity.MyRecordActivity"></activity>
         <activity android:name=".activity.MyfeedbackActivity"></activity>
         <activity android:name=".activity.MyversionActivity"></activity>
+        <activity android:name=".activity.FeedbacksuccessActivity"></activity>
     </application>
 
 </manifest>

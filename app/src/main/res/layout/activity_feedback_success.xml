@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="意见反馈"
+        android:textSize="14sp"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_140"
+        android:src="@drawable/feedback_img"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="@dimen/dp_70" />
+    <TextView
+        android:layout_gravity="center"
+        android:text="反馈成功"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="感谢您对唯独影院的支持，我们会认证处理您的"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="后馈，尽快修复和完善相关功能"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/image_back"
+        android:layout_marginTop="@dimen/dp_152"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:src="@drawable/com_icon_my_default_back"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60" />
+</LinearLayout>
