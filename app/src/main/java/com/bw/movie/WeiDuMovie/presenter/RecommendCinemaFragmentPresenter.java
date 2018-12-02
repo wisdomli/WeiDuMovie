@@ -21,8 +21,8 @@ import java.util.Map;
  * 2018/11/30
  **/
 public class RecommendCinemaFragmentPresenter extends AppDelegate {
-    private RecommendCinemaAdapter recommendCinemaAdapter;
     private XRecyclerView RecommendRecView;
+    private RecommendCinemaAdapter recommendCinemaAdapter;
 
     @Override
     public int getLayoutId() {
@@ -39,8 +39,7 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
         RecommendRecView = (XRecyclerView) get(R.id.RecommendRecView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         RecommendRecView.setLayoutManager(linearLayoutManager);
-        recommendCinemaAdapter = new RecommendCinemaAdapter(context);
-        RecommendRecView.loadMoreComplete();
+
         RecommendRecView.setLoadingMoreEnabled(true);
         RecommendRecView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
@@ -52,12 +51,9 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
             @Override
             public void onLoadMore() {
                 page++;
-              doHttp(page);
-
+                doHttp(page);
             }
         });
-        recommendCinemaAdapter.notifyDataSetChanged();
-        RecommendRecView.setAdapter(recommendCinemaAdapter);
     }
 
     private void doHttp(int page) {
@@ -73,8 +69,21 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
         super.suecssString(type, data);
         Gson gson = new Gson();
         CinemaBean cinemaBean = gson.fromJson(data, CinemaBean.class);
-        List<CinemaBean.ResultBean.NearbyCinemaListBean> nearbyCinemaList = cinemaBean.getResult().getNearbyCinemaList();
-        recommendCinemaAdapter.setList(nearbyCinemaList);
+        if (cinemaBean!=null&&cinemaBean.getResult().getNearbyCinemaList()!=null){
+            if (page==1){
+                List<CinemaBean.ResultBean.NearbyCinemaListBean> nearbyCinemaList = cinemaBean.getResult().getNearbyCinemaList();
+                recommendCinemaAdapter = new RecommendCinemaAdapter(context);
+                recommendCinemaAdapter.setList(nearbyCinemaList);
+                recommendCinemaAdapter.notifyDataSetChanged();
+                RecommendRecView.setAdapter(recommendCinemaAdapter);
+                RecommendRecView.refreshComplete();
+            }else {
+                if (recommendCinemaAdapter!=null){
+                    recommendCinemaAdapter.addPageData(cinemaBean.getResult().getNearbyCinemaList());
+                }
+                RecommendRecView.loadMoreComplete();
+            }
+        }
     }
 
     private Context context;

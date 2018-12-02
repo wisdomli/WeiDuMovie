@@ -27,6 +27,13 @@ public class NearbyCinemaAdapter extends RecyclerView.Adapter<NearbyCinemaAdapte
         this.context = context;
     }
 
+    public void addPageData(List<CinemaBean.ResultBean.NearbyCinemaListBean> list){
+        if (list!=null){
+            list.addAll(list);
+            notifyDataSetChanged();
+        }
+    }
+
     @NonNull
     @Override
     public NearbyCinemaAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

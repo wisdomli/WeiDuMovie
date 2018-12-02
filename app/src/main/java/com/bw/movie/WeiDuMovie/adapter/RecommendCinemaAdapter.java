@@ -29,6 +29,13 @@ public class RecommendCinemaAdapter extends RecyclerCoverFlow.Adapter<RecommendC
         this.context = context;
     }
 
+    public void addPageData(List<CinemaBean.ResultBean.NearbyCinemaListBean> list){
+        if (list!=null){
+            list.addAll(list);
+            notifyDataSetChanged();
+        }
+    }
+
     @NonNull
     @Override
     public RecommendCinemaAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
