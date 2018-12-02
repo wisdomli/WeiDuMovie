@@ -22,6 +22,7 @@ import java.util.Map;
  **/
 public class NearbyCinemaFragmentPresenter extends AppDelegate {
     private NearbyCinemaAdapter nearbyCinemaAdapter;
+    private XRecyclerView nearbycinemaRecView;
 
     @Override
     public int getLayoutId() {
@@ -32,13 +33,11 @@ public class NearbyCinemaFragmentPresenter extends AppDelegate {
     public void initData() {
         super.initData();
         doHttp(page);
-        XRecyclerView NearbycinemaRecView = get(R.id.NearbycinemaRecView);
+        nearbycinemaRecView = get(R.id.NearbycinemaRecView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        NearbycinemaRecView.setLayoutManager(linearLayoutManager);
-         nearbyCinemaAdapter = new NearbyCinemaAdapter(context);
-        NearbycinemaRecView.loadMoreComplete();
-        NearbycinemaRecView.setLoadingMoreEnabled(true);
-        NearbycinemaRecView.setLoadingListener(new XRecyclerView.LoadingListener() {
+        nearbycinemaRecView.setLayoutManager(linearLayoutManager);
+        nearbycinemaRecView.setLoadingMoreEnabled(true);
+        nearbycinemaRecView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
                 page=1;
@@ -49,11 +48,9 @@ public class NearbyCinemaFragmentPresenter extends AppDelegate {
             public void onLoadMore() {
                 page++;
                 doHttp(page);
-
             }
         });
-        nearbyCinemaAdapter.notifyDataSetChanged();
-        NearbycinemaRecView.setAdapter(nearbyCinemaAdapter);
+
     }
 
     private void doHttp(int page) {
@@ -70,8 +67,22 @@ public class NearbyCinemaFragmentPresenter extends AppDelegate {
         super.suecssString(type, data);
         Gson gson = new Gson();
         CinemaBean cinemaBean = gson.fromJson(data, CinemaBean.class);
-        List<CinemaBean.ResultBean.NearbyCinemaListBean> nearbyCinemaList = cinemaBean.getResult().getNearbyCinemaList();
-        nearbyCinemaAdapter.setList(nearbyCinemaList);
+        if (cinemaBean!=null&&cinemaBean.getResult().getNearbyCinemaList()!=null){
+            if (page==1){
+                List<CinemaBean.ResultBean.NearbyCinemaListBean> nearbyCinemaList = cinemaBean.getResult().getNearbyCinemaList();
+                nearbyCinemaAdapter = new NearbyCinemaAdapter(context);
+                nearbyCinemaAdapter.setList(nearbyCinemaList);
+                nearbyCinemaAdapter.notifyDataSetChanged();
+                nearbycinemaRecView.setAdapter(nearbyCinemaAdapter);
+                nearbycinemaRecView.refreshComplete();
+            }else {
+                if (nearbyCinemaAdapter!=null){
+                    nearbyCinemaAdapter.addPageData(cinemaBean.getResult().getNearbyCinemaList());
+                }
+                nearbycinemaRecView.loadMoreComplete();
+            }
+        }
+
     }
 
     private Context context;
