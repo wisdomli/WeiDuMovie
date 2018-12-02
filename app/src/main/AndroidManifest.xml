@@ -10,13 +10,15 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.WelcomeActivity"></activity>
+        <activity android:name=".activity.MainActivity"></activity>
         <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.RegActivity"></activity>
         <activity android:name=".activity.MyMessageActivity"></activity>
@@ -25,6 +27,7 @@
         <activity android:name=".activity.MyfeedbackActivity"></activity>
         <activity android:name=".activity.MyversionActivity"></activity>
         <activity android:name=".activity.FeedbacksuccessActivity"></activity>
+        <activity android:name=".activity.FilmDetailsActivity"></activity>
     </application>
 
 </manifest>

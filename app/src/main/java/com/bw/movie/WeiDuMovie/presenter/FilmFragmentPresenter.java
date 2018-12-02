@@ -44,7 +44,7 @@ public class FilmFragmentPresenter extends AppDelegate {
         super.initData();
         Map<String, String> map = new HashMap<>();
         map.put("page", "1");
-        map.put("count", "10");
+        map.put("count", "20");
         // 热门电影请求
         getString(0, HttpUrl.HotmoviesUrl + "?", map);
         // 正在热映请求
@@ -81,7 +81,7 @@ public class FilmFragmentPresenter extends AppDelegate {
         //使用RecyclerView，自定义LayoutManager实现旋转木马相册效果
         home_viewpager = (RecyclerCoverFlow) get(R.id.home_viewpager);
         // home_viewpager.setFlatFlow(true); //平面滚动
-         home_TabLayout_view = (TabLayout)get(R.id.home_TabLayout_view);
+        home_TabLayout_view = (TabLayout) get(R.id.home_TabLayout_view);
         home_viewpager.setAdapter(movieListAdapter);
         home_viewpager.scrollToPosition(3);
         home_viewpager.smoothScrollToPosition(3);
