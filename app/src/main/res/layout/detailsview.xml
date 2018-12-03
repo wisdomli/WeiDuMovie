@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_120"
+        android:background="@drawable/detailsview_bck">
+
+    </RelativeLayout>
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/filmDetails_img"
+        android:layout_width="111dp"
+        android:layout_height="149dp"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_90"
+        android:background="@drawable/moviebackground_04"
+        app:roundedCornerRadius="@dimen/dp_04" />
+
+    <TextView
+        android:id="@+id/Details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_90"
+        android:layout_toRightOf="@+id/filmDetails_img"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/btn_hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_120"
+        android:src="@drawable/com_icon_down_default" />
+
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_140"
+        android:layout_toRightOf="@+id/filmDetails_img"
+        android:text="类型:"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/type_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_140"
+        android:layout_toRightOf="@+id/type"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/filmDetails_img"
+        android:text="导演:"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/director_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/director"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/Duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/director"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/filmDetails_img"
+        android:text="时长:"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/duration_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/director"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/director"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Duration"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/filmDetails_img"
+        android:text="产地:"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/local_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Duration"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/director"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/plot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/filmDetails_img"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="剧情简介"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/plot_view"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="3dp"
+        android:layout_below="@+id/plot"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_06"
+        android:background="@drawable/cinema_btn"></View>
+
+    <TextView
+        android:id="@+id/plot_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plot_view"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="jianjie"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/Actingstaff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plot_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_15"
+        android:text="演职人员"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/Actingstaff_view"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="3dp"
+        android:layout_below="@+id/Actingstaff"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_06"
+        android:background="@drawable/cinema_btn"></View>
+
+    <TextView
+        android:id="@+id/Actorsname"
+        android:layout_width="@dimen/dp_75"
+        android:layout_height="@dimen/dp_35"
+        android:layout_below="@+id/Actingstaff_view"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/textview_bck"
+        android:gravity="center"
+        android:text="演员名字"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:layout_width="@dimen/dp_75"
+        android:layout_height="@dimen/dp_35"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/Actingstaff_view"
+        android:layout_marginRight="@dimen/dp_50"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/textview_bck"
+        android:gravity="center"
+        android:text="饰演角色"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/performer"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Actorsname"
+        android:layout_marginTop="@dimen/dp_12">
+
+    </TextView>
+
+
+</RelativeLayout>
