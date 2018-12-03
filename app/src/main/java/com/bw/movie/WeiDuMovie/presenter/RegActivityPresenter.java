@@ -30,6 +30,8 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
     private int sexs;
 
     private RelativeLayout Reg_btn;
+    private String email;
+    private String data_birthday;
 
     @Override
     public int getLayoutId() {
@@ -58,6 +60,10 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
         String status = regBean.getStatus();
         String message = regBean.getMessage();
         if (status.equals("0000")){
+            context.getSharedPreferences("config",0).edit()
+                    .putString("email",email)
+                    .putString("birthday",data_birthday)
+                    .commit();
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
             ((RegActivity)context).finish();
         }else {
@@ -84,9 +90,9 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
                 } else if ("女".equals(sex)) {
                     sexs =2;
                 }
-                String data = my_user_data.getText().toString().trim();
+                data_birthday = my_user_data.getText().toString().trim();
                 String phonenumber = my_user_phonenumber.getText().toString().trim();
-                String email = my_user_email.getText().toString().trim();
+                 email = my_user_email.getText().toString().trim();
                 String pwd = my_user_pwd.getText().toString().trim();
                 String repeat_pwd = this.repeat_pwd.getText().toString();
                 // 进行密码加密
@@ -96,7 +102,7 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
                     Toast.makeText(context,"请输入昵称",Toast.LENGTH_SHORT).show();
                 }else if(sex.isEmpty()){
                     Toast.makeText(context,"请输入性别",Toast.LENGTH_SHORT).show();
-                }else if (data.isEmpty()){
+                }else if (data_birthday.isEmpty()){
                     Toast.makeText(context,"请输入日期",Toast.LENGTH_SHORT).show();
                 }else if (phonenumber.isEmpty()){
                     Toast.makeText(context,"请输入手机号",Toast.LENGTH_SHORT).show();
@@ -106,15 +112,16 @@ public class RegActivityPresenter extends AppDelegate implements View.OnClickLis
                     Toast.makeText(context,"请输入登录密码",Toast.LENGTH_SHORT).show();
                 }else if (repeat_pwd.isEmpty()){
                     Toast.makeText(context,"再次确认密码",Toast.LENGTH_SHORT).show();
-                }else if(!name.isEmpty()&&!sex.isEmpty()&&!data.isEmpty()&&!phonenumber.isEmpty()&&!email.isEmpty()&&!pwd.isEmpty()&&!repeat_password.isEmpty()){
+                }else if(!name.isEmpty()&&!sex.isEmpty()&&!data_birthday.isEmpty()&&!phonenumber.isEmpty()&&!email.isEmpty()&&!pwd.isEmpty()&&!repeat_password.isEmpty()){
                     map.put("nickName", name);
                     map.put("phone", phonenumber);
                     map.put("pwd", password);
                     map.put("pwd2", repeat_password);
                     map.put("sex", ""+sexs);
-                    map.put("birthday", data);
+                    map.put("birthday", data_birthday);
                     map.put("email", email);
                     postString(0, HttpUrl.RegisterUrl, map);
+                    
                 }
                 break;
         }
