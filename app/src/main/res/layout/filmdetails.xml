@@ -148,4 +148,8 @@
         layout="@layout/noticeview"
         android:visibility="gone"></include>
 
+    <include layout="@layout/stillsview"
+        android:id="@+id/stillsview"
+        android:visibility="gone"></include>
+
 </RelativeLayout>

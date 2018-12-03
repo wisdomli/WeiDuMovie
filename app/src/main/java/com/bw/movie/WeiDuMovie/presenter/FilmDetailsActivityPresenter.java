@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.activity.FilmDetailsActivity;
 import com.bw.movie.WeiDuMovie.adapter.NoticevideoAdapter;
+import com.bw.movie.WeiDuMovie.adapter.StillsAdapter;
 import com.bw.movie.WeiDuMovie.bean.FilmDetailsBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
@@ -44,6 +46,8 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
     private TextView performer;
     private View noticeview;
     private NoticevideoAdapter noticevideoAdapter;
+    private View stillsview;
+    private StillsAdapter stillsAdapter;
 
     @Override
     public int getLayoutId() {
@@ -92,6 +96,16 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
         noticeRecyclerView.setLayoutManager(linearLayoutManager);
          noticevideoAdapter = new NoticevideoAdapter(context);
         noticeRecyclerView.setAdapter(noticevideoAdapter);
+        /**
+         * 剧照
+         */
+        stillsview = get(R.id.stillsview);
+        stillsview.findViewById(R.id.btn_hide).setOnClickListener(this);
+       RecyclerView stillsRecyclerView= stillsview.findViewById(R.id.stillsRecyclerView);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        stillsRecyclerView.setLayoutManager(staggeredGridLayoutManager);
+        stillsAdapter = new StillsAdapter(context);
+        stillsRecyclerView.setAdapter(stillsAdapter);
     }
 
     @Override
@@ -112,7 +126,9 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
         plot_content.setText(result.getSummary()); // 电影简介
         performer.setText(result.getStarring());// 演员列表
         List<FilmDetailsBean.ResultBean.ShortFilmListBean> shortFilmList = result.getShortFilmList();// 预告片列表
-        noticevideoAdapter.setList(shortFilmList);
+        noticevideoAdapter.setList(shortFilmList);// 预告片
+        List<String> posterList = result.getPosterList();
+        stillsAdapter.setList(posterList);
 
     }
 
@@ -143,6 +159,7 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
             case R.id.btn_hide:
                 DetailsView.setVisibility(View.GONE);
                 noticeview.setVisibility(View.GONE);
+                stillsview.setVisibility(View.GONE);
                 details_name.setText("电影详情");
                 filmDetails_title.setText(result.getName());
                 break;
@@ -151,7 +168,8 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
                 details_name.setText(result.getName());
                 break;
             case R.id.filmDetails_btn_Stills:
-
+                stillsview.setVisibility(View.VISIBLE);
+                details_name.setText(result.getName());
                 break;
         }
     }

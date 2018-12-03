@@ -75,4 +75,6 @@
     <dimen name="dp_420">420dp</dimen>
     <dimen name="dp_430">430dp</dimen>
     <dimen name="dp_75">75dp</dimen>
+    <dimen name="dp_195">195dp</dimen>
+    <dimen name="dp_165">165dp</dimen>
 </resources>
