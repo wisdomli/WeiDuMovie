@@ -1,59 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/relat_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="@dimen/dp_83"
-            android:layout_height="@dimen/dp_23"
+
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
             android:layout_marginLeft="@dimen/dp_80"
             android:layout_marginTop="@dimen/dp_50"
             android:background="@drawable/my_followshape">
 
             <TextView
                 android:id="@+id/my_Film"
-                android:layout_width="@dimen/dp_83"
-                android:layout_height="@dimen/dp_23"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_40"
                 android:gravity="center"
                 android:text="电影"
                 android:textSize="14sp" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="@dimen/dp_83"
-            android:layout_height="@dimen/dp_23"
+
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
             android:layout_marginLeft="@dimen/dp_200"
             android:layout_marginTop="@dimen/dp_50"
             android:background="@drawable/my_followshape">
 
             <TextView
                 android:id="@+id/my_Cinema"
-                android:layout_width="@dimen/dp_83"
-                android:layout_height="@dimen/dp_23"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_40"
                 android:gravity="center"
                 android:text="影院"
                 android:textSize="14sp" />
         </RelativeLayout>
     </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="@dimen/dp_312"
-        android:layout_height="@dimen/dp_148"
-        android:layout_marginLeft="@dimen/dp_24"
-        android:layout_marginTop="@dimen/dp_30"
-        android:background="@drawable/my_followshape"></RelativeLayout>
+    <FrameLayout
+        android:layout_below="@+id/relat_layout"
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"></FrameLayout>
 
     <ImageView
         android:id="@+id/image_back_follow"
         android:layout_width="@dimen/dp_60"
         android:layout_height="@dimen/dp_60"
         android:layout_marginLeft="@dimen/dp_24"
-        android:layout_marginTop="@dimen/dp_295"
+        android:layout_marginTop="@dimen/dp_35"
         android:src="@drawable/com_icon_my_default_back" />
+
 </LinearLayout>
 

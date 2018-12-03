@@ -54,12 +54,18 @@ public class NearbyCinemaFragmentPresenter extends AppDelegate {
     }
 
     private void doHttp(int page) {
+        String sessionId = context.getSharedPreferences("config", 0).getString("sessionId", "").toString();
+        int userId = context.getSharedPreferences("config", 0).getInt("userId", 0);
+        HashMap<String, String> hashMapHead = new HashMap<>();
         Map<String,String> map = new HashMap<>();
         map.put("longitude","116.30551391385724");
         map.put("latitude","40.04571807462411");
         map.put("page",page+"");
         map.put("count","6");
-        getString(0, HttpUrl.CinemasUrl+"?",map);
+        hashMapHead.put("sessionId",sessionId);
+        hashMapHead.put("userId",userId+"");
+        hashMapHead.put("Content-Type","application/x-www-form-urlencoded");
+        getString1(0, HttpUrl.CinemasUrl,map,hashMapHead);
     }
 
     @Override

@@ -23,6 +23,7 @@ import java.util.Map;
 public class RecommendCinemaFragmentPresenter extends AppDelegate {
     private XRecyclerView RecommendRecView;
     private RecommendCinemaAdapter recommendCinemaAdapter;
+    private CinemaBean cinemaBean;
 
     @Override
     public int getLayoutId() {
@@ -57,10 +58,16 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
     }
 
     private void doHttp(int page) {
+        String sessionId = context.getSharedPreferences("config", 0).getString("sessionId", "").toString();
+        int userId = context.getSharedPreferences("config", 0).getInt("userId", 0);
+        HashMap<String, String> hashMapHead = new HashMap<>();
         Map<String, String> map = new HashMap<>();
         map.put("page", page + "");
         map.put("count", "20");
-        getString(0, HttpUrl.CinemasUrl, map);
+        hashMapHead.put("sessionId",sessionId);
+        hashMapHead.put("userId",userId+"");
+        hashMapHead.put("Content-Type","application/x-www-form-urlencoded");
+        getString1(0, HttpUrl.CinemasUrl, map,hashMapHead);
     }
 
 
@@ -68,8 +75,8 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
     public void suecssString(int type, String data) {
         super.suecssString(type, data);
         Gson gson = new Gson();
-        CinemaBean cinemaBean = gson.fromJson(data, CinemaBean.class);
-        if (cinemaBean!=null&&cinemaBean.getResult().getNearbyCinemaList()!=null){
+        cinemaBean = gson.fromJson(data, CinemaBean.class);
+        if (cinemaBean !=null&& cinemaBean.getResult().getNearbyCinemaList()!=null){
             if (page==1){
                 List<CinemaBean.ResultBean.NearbyCinemaListBean> nearbyCinemaList = cinemaBean.getResult().getNearbyCinemaList();
                 recommendCinemaAdapter = new RecommendCinemaAdapter(context);

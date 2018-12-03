@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/cinema_btn_f"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_90"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/Cinema_img"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_20"
+            app:roundedCornerRadius="@dimen/dp_04" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20">
+
+            <TextView
+                android:id="@+id/Cinema_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="大地影院 (西二旗物美店)"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Cinema_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Cinema_title"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="海淀区悦秀路99号"
+                android:textColor="#333333"
+                android:textSize="@dimen/dp_12" />
+
+            <TextView
+                android:id="@+id/Cinema_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="3.3km"
+                android:textColor="#333333"
+                android:textSize="@dimen/dp_12" />
+
+            <ImageView
+                android:id="@+id/Cinema_follow_img"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/com_icon_collection_default"
+                android:tint="#999999" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
