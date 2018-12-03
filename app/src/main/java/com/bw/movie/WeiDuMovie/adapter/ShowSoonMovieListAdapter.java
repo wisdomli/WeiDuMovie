@@ -1,6 +1,7 @@
 package com.bw.movie.WeiDuMovie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.WeiDuMovie.R;
+import com.bw.movie.WeiDuMovie.activity.FilmDetailsActivity;
 import com.bw.movie.WeiDuMovie.bean.MovieListBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -38,9 +40,17 @@ public class ShowSoonMovieListAdapter extends RecyclerView.Adapter<ShowSoonMovie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ShowSoonMovieListAdapter.MyHolder myHolder, int i) {
+    public void onBindViewHolder(@NonNull ShowSoonMovieListAdapter.MyHolder myHolder, final int i) {
         myHolder.movie_img.setImageURI(list.get(i).getImageUrl());
         myHolder.movie_title.setText(list.get(i).getName());
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, FilmDetailsActivity.class);
+                intent.putExtra("movieId",list.get(i).getId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

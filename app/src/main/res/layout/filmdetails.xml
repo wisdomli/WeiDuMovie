@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/moviebackground_03">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/filmDetails_img_Gaussfuzzy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.2" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_30"
+        android:src="@drawable/com_icon_movie_default" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_30"
+        android:src="@drawable/com_icon_collection_default" />
+
+    <TextView
+        android:id="@+id/filmDetails_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_70"
+        android:text="铁血战士"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/filmDetails_img"
+        android:layout_width="259dp"
+        android:layout_height="360dp"
+        android:layout_below="@+id/filmDetails_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_30" />
+
+    <LinearLayout
+        android:id="@+id/filmDetails_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/filmDetails_img"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_40"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/filmDetails_btn_Details"
+            android:layout_width="58dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/filmdetails_btn_bck"
+            android:text="详情"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="58dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/filmdetails_btn_bck"
+            android:text="预告"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="58dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/filmdetails_btn_bck"
+            android:text="剧照"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="58dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/filmdetails_btn_bck"
+            android:text="影评"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/filmDetails_btn"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_12">
+
+        <ImageView
+            android:id="@+id/filmDetails_btn_back"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:src="@drawable/com_icon_my_default_back" />
+
+        <Button
+            android:id="@+id/filmDetails_btn_Tickebuy"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/filmdetails_btn_tickebuy"
+            android:text="购票"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+</RelativeLayout>
