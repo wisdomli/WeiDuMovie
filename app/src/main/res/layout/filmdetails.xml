@@ -11,12 +11,24 @@
         android:alpha="0.2" />
 
     <ImageView
+        android:id="@+id/movie"
         android:layout_width="@dimen/dp_24"
         android:layout_height="@dimen/dp_24"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_30"
         android:src="@drawable/com_icon_movie_default" />
+
+    <TextView
+        android:id="@+id/details_name"
+        android:layout_toRightOf="@+id/movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="@dimen/dp_06"
+        android:text="电影详情"/>
 
     <ImageView
         android:layout_width="@dimen/dp_24"
@@ -67,6 +79,7 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/filmDetails_btn_Notice"
             android:layout_width="58dp"
             android:layout_height="32dp"
             android:layout_marginRight="@dimen/dp_20"
@@ -77,6 +90,7 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/filmDetails_btn_Stills"
             android:layout_width="58dp"
             android:layout_height="32dp"
             android:layout_marginRight="@dimen/dp_20"
@@ -87,6 +101,7 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/filmDetails_btn_Filmreview"
             android:layout_width="58dp"
             android:layout_height="32dp"
             android:layout_weight="1"
@@ -122,5 +137,15 @@
             android:text="购票"
             android:textColor="#ffffff" />
     </RelativeLayout>
+
+    <include
+        android:id="@+id/DetailsView"
+        layout="@layout/detailsview"
+       android:visibility="gone"></include>
+
+    <include
+        android:id="@+id/noticeview"
+        layout="@layout/noticeview"
+        android:visibility="gone"></include>
 
 </RelativeLayout>

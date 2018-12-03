@@ -17,8 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.WelcomeActivity"></activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity"
+           ></activity>
         <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.RegActivity"></activity>
         <activity android:name=".activity.MyMessageActivity"></activity>
@@ -27,7 +29,9 @@
         <activity android:name=".activity.MyfeedbackActivity"></activity>
         <activity android:name=".activity.MyversionActivity"></activity>
         <activity android:name=".activity.FeedbacksuccessActivity"></activity>
-        <activity android:name=".activity.FilmDetailsActivity"></activity>
+        <activity android:name=".activity.FilmDetailsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" ></activity>
     </application>
 
 </manifest>

@@ -65,4 +65,14 @@
     <dimen name="dp_152">152dp</dimen>
     <dimen name="dp_235">235dp</dimen>
     <dimen name="dp_190">190dp</dimen>
+    <dimen name="dp_170">170dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+    <dimen name="dp_162">162dp</dimen>
+    <dimen name="dp_182">182dp</dimen>
+    <dimen name="dp_202">202dp</dimen>
+    <dimen name="dp_265">265dp</dimen>
+    <dimen name="dp_390">390dp</dimen>
+    <dimen name="dp_420">420dp</dimen>
+    <dimen name="dp_430">430dp</dimen>
+    <dimen name="dp_75">75dp</dimen>
 </resources>
