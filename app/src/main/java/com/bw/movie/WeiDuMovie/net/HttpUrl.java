@@ -15,4 +15,5 @@ public class HttpUrl {
     public static String CinemasUrl = "movieApi/cinema/v1/findRecommendCinemas";
     public static String FeedBackUrl = "movieApi/tool/v1/verify/recordFeedBack";
     public static String MoviesDetailUrl ="movieApi/movie/v1/findMoviesDetail";
+    public static String UpdateUrl ="movieApi/user/v1/verify/modifyUserInfo";
 }

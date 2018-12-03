@@ -28,6 +28,7 @@
         <activity android:name=".activity.MyversionActivity"></activity>
         <activity android:name=".activity.FeedbacksuccessActivity"></activity>
         <activity android:name=".activity.FilmDetailsActivity"></activity>
+        <activity android:name=".activity.UpdateUserActivity"></activity>
     </application>
 
 </manifest>
