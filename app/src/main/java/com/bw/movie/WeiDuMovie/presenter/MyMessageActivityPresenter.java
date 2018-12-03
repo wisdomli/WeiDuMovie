@@ -1,6 +1,8 @@
 package com.bw.movie.WeiDuMovie.presenter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.activity.MyMessageActivity;
+import com.bw.movie.WeiDuMovie.activity.UpdateUserActivity;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 
 /**
@@ -24,6 +27,7 @@ public class MyMessageActivityPresenter extends AppDelegate implements View.OnCl
     private TextView my_sex;
     private TextView my_email;
     private TextView my_birthday;
+    private RelativeLayout my_name_user;
 
     @Override
     public int getLayoutId() {
@@ -38,10 +42,12 @@ public class MyMessageActivityPresenter extends AppDelegate implements View.OnCl
         nickName_name = get(R.id.nickName);
         my_email = get(R.id.my_email);
         my_birthday = get(R.id.my_birthday);
+        my_name_user = get(R.id.my_name_user);
         my_sex = get(R.id.my_sex);
         phone = get(R.id.phone);
         setOnClikLisener(this,R.id.image_back);
         setOnClikLisener(this,R.id.back_login);
+        setOnClikLisener(this,R.id.my_name_user);
     }
 
     private Context context;
@@ -65,35 +71,40 @@ public class MyMessageActivityPresenter extends AppDelegate implements View.OnCl
                 }else {
                     Toast.makeText(context,"您还没有登录",Toast.LENGTH_SHORT).show();
                 }
-
+                break;
+            case R.id.my_name_user:
+                Intent intent = new Intent(context, UpdateUserActivity.class);
+                context.startActivity(intent);
                 break;
         }
     }
 
     public void onResume() {
-        String name = context.getSharedPreferences("config", 0).getString("phone", "").toString();
-        String email = context.getSharedPreferences("config", 0).getString("email", "").toString();
-        String nickName = context.getSharedPreferences("config", 0).getString("nickName", "").toString();
-        int sex = context.getSharedPreferences("config", 0).getInt("sex", 0);
-        long birthday = context.getSharedPreferences("config", 0).getLong("birthday", 0);
-       /* //获取生日
-        if (birthday!=0){
-            my_birthday.setText("");
-        }else {
-            my_birthday.setText(birthday+"");
-        }
+        SharedPreferences config = context.getSharedPreferences("config", 0);
+        String name =config .getString("phone", "").toString();
+        String nickName = config.getString("nickName", "").toString();
+        String email = config.getString("email", "").toString();
+        int sex = config.getInt("sex", 0);
+        String birthday = config.getString("birthday", "");
+
+        //获取生日
+       if (birthday.isEmpty()){
+           my_birthday.setText("");
+       }else {
+           my_birthday.setText(birthday);
+       }
         //获取性别
-        if (sex!=0){
-            my_sex.setText("");
-        }else {
-            my_sex.setText(sex);
+        if (sex==1){
+            my_sex.setText("男");
+        }else if(sex == 2){
+            my_sex.setText("女");
         }
         //获取邮箱
         if (email.isEmpty()){
             my_email.setText("");
         }else {
             my_email.setText(email);
-        }*/
+        }
         //获取用户名
         if (nickName.isEmpty()){
             nickName_name.setText("");

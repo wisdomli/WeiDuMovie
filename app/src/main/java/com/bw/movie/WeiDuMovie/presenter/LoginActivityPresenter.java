@@ -68,18 +68,19 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
         String status = logBean.getStatus();
         String message = logBean.getMessage();
         if (status.equals("0000")){
+
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+
             context.getSharedPreferences("config",0).edit()
                     .putString("nickName",logBean.getResult().getUserInfo().getNickName())
                     .putInt("sex",logBean.getResult().getUserInfo().getSex())
-                    .putLong("birthday",logBean.getResult().getUserInfo().getBirthday())
                     .putString("phone",logBean.getResult().getUserInfo().getPhone())
-                    .putString("email",logBean.getResult().getUserInfo().getEmail())
                     .putString("sessionId",logBean.getResult().getSessionId())
                     .putInt("userId",logBean.getResult().getUserId())
                     .putBoolean("isLogin",true)
                     .commit();
-            Log.i("aaa",logBean.getResult().getUserInfo().getBirthday()+"");
+            Log.i("LoginActivityPresenter",data);
+
             ((LoginActivity)context).finish();
         }else {
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
@@ -106,7 +107,6 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
                 String pwd = EncryptUtil.encrypt(login_pwd);
                 hashMap.put("phone",login_name);
                 hashMap.put("pwd",pwd);
-
                 postString(0, HttpUrl.LoginUrl,hashMap);
                 break;
         }

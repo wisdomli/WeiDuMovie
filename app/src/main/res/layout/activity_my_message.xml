@@ -46,6 +46,7 @@
                     android:layout_height="@dimen/dp_40" />
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/my_name_user"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_34">
                 <TextView
@@ -115,7 +116,7 @@
                 <TextView
                     android:id="@+id/my_birthday"
                     android:textSize="14sp"
-                    android:layout_marginLeft="@dimen/dp_245"
+                    android:layout_marginLeft="@dimen/dp_220"
                     android:layout_marginTop="@dimen/dp_10"
                     android:text=""
                     android:layout_width="wrap_content"
@@ -148,7 +149,7 @@
                 <TextView
                     android:id="@+id/phone"
                     android:textSize="14sp"
-                    android:layout_marginLeft="@dimen/dp_190"
+                    android:layout_marginLeft="@dimen/dp_195"
                     android:layout_marginTop="@dimen/dp_10"
                     android:text=""
                     android:layout_width="wrap_content"
@@ -173,7 +174,7 @@
                 <TextView
                     android:id="@+id/my_email"
                     android:textSize="14sp"
-                    android:layout_marginLeft="@dimen/dp_245"
+                    android:layout_marginLeft="@dimen/dp_165"
                     android:layout_marginTop="@dimen/dp_10"
                     android:text=""
                     android:layout_width="wrap_content"
