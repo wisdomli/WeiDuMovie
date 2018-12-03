@@ -2,9 +2,13 @@ package com.bw.movie.WeiDuMovie.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.text.method.TransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +38,7 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
     private RelativeLayout login_lg;
     private Map<String, String> hashMap;
     private LoginBean logBean;
+    private ImageView eyepassword;
 
     @Override
     public int getLayoutId() {
@@ -47,10 +52,12 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
         login_phone = get(R.id.login_phone);
         login_password = get(R.id.login_password);
         login_lg = get(R.id.login_lg);
+        eyepassword = get(R.id.eyepassword);
         hashMap = new HashMap<>();
         setOnClikLisener(this,R.id.login_lg);
         //点击进入注册页面
         setOnClikLisener(this,R.id.text_reg);
+        setOnClikLisener(this,R.id.eyepassword);
     }
 
     private Context context;
@@ -108,6 +115,15 @@ public class LoginActivityPresenter extends AppDelegate implements View.OnClickL
                 hashMap.put("phone",login_name);
                 hashMap.put("pwd",pwd);
                 postString(0, HttpUrl.LoginUrl,hashMap);
+                break;
+            case R.id.eyepassword:
+                //显示与隐藏密码
+                TransformationMethod type = login_password.getTransformationMethod();
+                if (PasswordTransformationMethod.getInstance().equals(type)){
+                    login_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else {
+                    login_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
                 break;
         }
     }

@@ -149,6 +149,7 @@
             android:layout_marginTop="@dimen/dp_15"
             android:backgroundTint="#A9A9A9"
             android:gravity="center"
+            android:inputType="textPassword"
             android:hint="登录密码"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff" />
@@ -172,6 +173,7 @@
             android:layout_marginTop="@dimen/dp_15"
             android:backgroundTint="#A9A9A9"
             android:gravity="center"
+            android:inputType="textPassword"
             android:hint="重复密码"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff" />

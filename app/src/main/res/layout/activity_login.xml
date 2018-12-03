@@ -44,11 +44,13 @@
             android:id="@+id/login_password"
             android:backgroundTint="#FFFFFF"
             android:hint="登录密码"
+            android:inputType="textPassword"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:layout_width="@dimen/dp_305"
             android:layout_height="wrap_content" />
         <ImageView
+            android:id="@+id/eyepassword"
             android:layout_marginLeft="@dimen/dp_305"
             android:layout_marginTop="@dimen/dp_30"
             android:src="@drawable/log_icon_eye_default"

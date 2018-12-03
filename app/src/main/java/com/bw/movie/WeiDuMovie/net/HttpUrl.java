@@ -16,4 +16,7 @@ public class HttpUrl {
     public static String FeedBackUrl = "movieApi/tool/v1/verify/recordFeedBack";
     public static String MoviesDetailUrl ="movieApi/movie/v1/findMoviesDetail";
     public static String UpdateUrl ="movieApi/user/v1/verify/modifyUserInfo";
+    public static String QueryUrl ="movieApi/cinema/v1/verify/findCinemaPageList";
+    public static String SuccessFollow ="movieApi/cinema/v1/verify/followCinema";
+    public static String FailureFollow ="movieApi/cinema/v1/verify/cancelFollowCinema";
 }

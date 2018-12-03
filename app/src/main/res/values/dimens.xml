@@ -67,4 +67,6 @@
     <dimen name="dp_190">190dp</dimen>
     <dimen name="dp_195">195dp</dimen>
     <dimen name="dp_165">165dp</dimen>
+    <dimen name="dp_470">470dp</dimen>
+    <dimen name="dp_490">490dp</dimen>
 </resources>

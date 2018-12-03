@@ -19,11 +19,20 @@ import retrofit2.http.Url;
  * 2018/11/27
  **/
 public interface BaseService {
+
+
     @GET
     Observable<ResponseBody> get(@Url String url, @QueryMap Map<String,String> map);
+
+
+    @GET
+    Observable<ResponseBody> get1(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String,String> mapHead);
+
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> post1(@Url String url, @FieldMap Map<String, String> map, @HeaderMap Map<String,String> mapHead);
+
+
     @FormUrlEncoded
     @POST
     @Headers({
