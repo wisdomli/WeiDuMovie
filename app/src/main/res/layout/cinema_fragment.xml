@@ -77,4 +77,8 @@
     </android.support.v4.view.ViewPager>
 
 
+    <include layout="@layout/network"
+        android:id="@+id/networkView"
+        android:visibility="gone"></include>
+
 </RelativeLayout>

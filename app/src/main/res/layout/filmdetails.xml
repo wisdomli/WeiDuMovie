@@ -152,4 +152,7 @@
         android:id="@+id/stillsview"
         android:visibility="gone"></include>
 
+    <include layout="@layout/filmreview"
+        android:id="@+id/filmreview"
+        android:visibility="gone"></include>
 </RelativeLayout>

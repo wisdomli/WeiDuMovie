@@ -8,6 +8,7 @@ import com.bw.movie.WeiDuMovie.adapter.NearbyCinemaAdapter;
 import com.bw.movie.WeiDuMovie.bean.CinemaBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
+import com.bw.movie.WeiDuMovie.net.NetWork;
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -96,5 +97,11 @@ public class NearbyCinemaFragmentPresenter extends AppDelegate {
     public void getContext(Context context) {
         super.getContext(context);
         this.context = context;
+    }
+
+    public void onResume() {
+        if (NetWork.isConnected(context)){
+            doHttp(page);
+        }
     }
 }

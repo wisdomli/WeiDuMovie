@@ -13,4 +13,10 @@ public class FilmFragment extends BaseFragmentPresenter<FilmFragmentPresenter> {
     public Class<FilmFragmentPresenter> getClassDelegate() {
         return FilmFragmentPresenter.class;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        delegate.onResume();
+    }
 }

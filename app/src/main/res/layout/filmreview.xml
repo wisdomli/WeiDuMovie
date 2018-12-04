@@ -12,23 +12,25 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/Stills"
+        android:id="@+id/filmreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_140"
-        android:text="剧照"
+        android:text="影评"
         android:textColor="#333333"
         android:textSize="16sp" />
 
     <View
-        android:id="@+id/Stills_view"
+        android:id="@+id/filmre_view"
         android:layout_width="@dimen/dp_30"
         android:layout_height="@dimen/dp_03"
-        android:layout_below="@+id/Stills"
+        android:layout_below="@+id/filmreview"
         android:layout_marginLeft="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_06"
-        android:background="@drawable/cinema_btn"></View>
+        android:background="@drawable/cinema_btn">
+
+    </View>
 
     <ImageView
         android:id="@+id/btn_hide"
@@ -39,16 +41,13 @@
         android:layout_marginTop="@dimen/dp_120"
         android:src="@drawable/com_icon_down_default" />
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/stillsRecyclerView"
-    android:layout_below="@+id/Stills_view"
-    android:layout_width="match_parent"
-    android:layout_marginTop="@dimen/dp_10"
-    android:layout_marginLeft="@dimen/dp_24"
-    android:layout_marginRight="@dimen/dp_24"
-    android:layout_height="match_parent">
 
-</android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/filmreviewRecyclerView"
+        android:layout_below="@+id/filmre_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

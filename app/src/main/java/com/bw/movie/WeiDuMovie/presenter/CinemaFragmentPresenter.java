@@ -15,6 +15,7 @@ import com.bw.movie.WeiDuMovie.activity.MainActivity;
 import com.bw.movie.WeiDuMovie.fragment.NearbyCinemaFragment;
 import com.bw.movie.WeiDuMovie.fragment.RecommendCinemaFragment;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
+import com.bw.movie.WeiDuMovie.net.NetWork;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class CinemaFragmentPresenter extends AppDelegate implements View.OnClick
     private List<Fragment> fragments = new ArrayList<>();
     private ViewPager Cinema_ViewPager;
     private Button btn_Recommend, btn_nearby;
+    private View networkView;
 
     @Override
     public int getLayoutId() {
@@ -37,6 +39,8 @@ public class CinemaFragmentPresenter extends AppDelegate implements View.OnClick
     @Override
     public void initData() {
         super.initData();
+        // 判断有网无网
+        networkView = get(R.id.networkView);
         btn_Recommend = (Button) get(R.id.btn_Recommend);
         btn_nearby = (Button) get(R.id.btn_nearby);
         setOnClikLisener(this, R.id.btn_Recommend, R.id.btn_nearby);
@@ -76,6 +80,8 @@ public class CinemaFragmentPresenter extends AppDelegate implements View.OnClick
     }
 
 
+
+
     private class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
 
         public FragmentPagerAdapter(FragmentManager fm) {
@@ -100,5 +106,14 @@ public class CinemaFragmentPresenter extends AppDelegate implements View.OnClick
     public void getContext(Context context) {
         super.getContext(context);
         this.context = context;
+    }
+
+
+    public void onResume() {
+      if (NetWork.isConnected(context)){
+          networkView.setVisibility(View.GONE);
+      }else {
+          networkView.setVisibility(View.VISIBLE);
+      }
     }
 }

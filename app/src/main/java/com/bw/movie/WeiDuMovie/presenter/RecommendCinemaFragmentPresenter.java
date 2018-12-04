@@ -8,6 +8,7 @@ import com.bw.movie.WeiDuMovie.adapter.RecommendCinemaAdapter;
 import com.bw.movie.WeiDuMovie.bean.CinemaBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
+import com.bw.movie.WeiDuMovie.net.NetWork;
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -31,7 +32,8 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
     }
 
 
-   private int page = 1;
+    private int page = 1;
+
     @Override
     public void initData() {
         super.initData();
@@ -45,7 +47,7 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
         RecommendRecView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                page =1;
+                page = 1;
                 doHttp(page);
             }
 
@@ -64,10 +66,10 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
         Map<String, String> map = new HashMap<>();
         map.put("page", page + "");
         map.put("count", "20");
-        hashMapHead.put("sessionId",sessionId);
-        hashMapHead.put("userId",userId+"");
-        hashMapHead.put("Content-Type","application/x-www-form-urlencoded");
-        getString1(0, HttpUrl.CinemasUrl, map,hashMapHead);
+        hashMapHead.put("sessionId", sessionId);
+        hashMapHead.put("userId", userId + "");
+        hashMapHead.put("Content-Type", "application/x-www-form-urlencoded");
+        getString1(0, HttpUrl.CinemasUrl, map, hashMapHead);
     }
 
 
@@ -76,16 +78,16 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
         super.suecssString(type, data);
         Gson gson = new Gson();
         cinemaBean = gson.fromJson(data, CinemaBean.class);
-        if (cinemaBean !=null&& cinemaBean.getResult().getNearbyCinemaList()!=null){
-            if (page==1){
+        if (cinemaBean != null && cinemaBean.getResult().getNearbyCinemaList() != null) {
+            if (page == 1) {
                 List<CinemaBean.ResultBean.NearbyCinemaListBean> nearbyCinemaList = cinemaBean.getResult().getNearbyCinemaList();
                 recommendCinemaAdapter = new RecommendCinemaAdapter(context);
                 recommendCinemaAdapter.setList(nearbyCinemaList);
                 recommendCinemaAdapter.notifyDataSetChanged();
                 RecommendRecView.setAdapter(recommendCinemaAdapter);
                 RecommendRecView.refreshComplete();
-            }else {
-                if (recommendCinemaAdapter!=null){
+            } else {
+                if (recommendCinemaAdapter != null) {
                     recommendCinemaAdapter.addPageData(cinemaBean.getResult().getNearbyCinemaList());
                 }
                 RecommendRecView.loadMoreComplete();
@@ -99,5 +101,11 @@ public class RecommendCinemaFragmentPresenter extends AppDelegate {
     public void getContext(Context context) {
         super.getContext(context);
         this.context = context;
+    }
+
+    public void onResume() {
+        if (NetWork.isConnected(context)) {
+            doHttp(page);
+        }
     }
 }

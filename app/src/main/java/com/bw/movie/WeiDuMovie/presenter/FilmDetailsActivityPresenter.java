@@ -3,22 +3,27 @@ package com.bw.movie.WeiDuMovie.presenter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.activity.FilmDetailsActivity;
 import com.bw.movie.WeiDuMovie.adapter.NoticevideoAdapter;
 import com.bw.movie.WeiDuMovie.adapter.StillsAdapter;
 import com.bw.movie.WeiDuMovie.bean.FilmDetailsBean;
+import com.bw.movie.WeiDuMovie.bean.FilmReviewBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +53,7 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
     private NoticevideoAdapter noticevideoAdapter;
     private View stillsview;
     private StillsAdapter stillsAdapter;
+    private View filmreview;
 
     @Override
     public int getLayoutId() {
@@ -61,11 +67,12 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
         int movieId = intent.getIntExtra("movieId", 0);
         Map<String, String> map = new HashMap<>();
         map.put("movieId", movieId + "");
-        getString(0, HttpUrl.MoviesDetailUrl, map);
+        getString(0, HttpUrl.MoviesDetailUrl, map);// 请求接口
+
         FilmDetails_img = (SimpleDraweeView) get(R.id.filmDetails_img);
         filmDetails_img_Gaussfuzzy = (SimpleDraweeView) get(R.id.filmDetails_img_Gaussfuzzy);
         filmDetails_title = (TextView) get(R.id.filmDetails_title);// 电影详情
-        details_name = (TextView)get(R.id.details_name);// 电影详情
+        details_name = (TextView) get(R.id.details_name);// 电影详情
         setOnClikLisener(this,
                 R.id.filmDetails_btn_back, // 返回销毁当前页面
                 R.id.filmDetails_btn_Tickebuy,// 购票
@@ -76,11 +83,11 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
         /**
          * 详情
          */
-         DetailsView = get(R.id.DetailsView);// 详情View
-         filmDetails_img =(SimpleDraweeView) DetailsView.findViewById(R.id.filmDetails_img);
+        DetailsView = get(R.id.DetailsView);// 详情View
+        filmDetails_img = (SimpleDraweeView) DetailsView.findViewById(R.id.filmDetails_img);
         DetailsView.findViewById(R.id.btn_hide).setOnClickListener(this);
         type_name = DetailsView.findViewById(R.id.type_name);
-        director_name =(TextView) DetailsView.findViewById(R.id.director_name);
+        director_name = (TextView) DetailsView.findViewById(R.id.director_name);
         duration_name = (TextView) DetailsView.findViewById(R.id.duration_name);
         local_name = (TextView) DetailsView.findViewById(R.id.local_name);
         plot_content = (TextView) DetailsView.findViewById(R.id.plot_content);
@@ -91,44 +98,73 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
          */
         noticeview = get(R.id.noticeview);
         noticeview.findViewById(R.id.btn_hide).setOnClickListener(this);
-      RecyclerView noticeRecyclerView = noticeview.findViewById(R.id.noticeRecyclerView);
+        RecyclerView noticeRecyclerView = noticeview.findViewById(R.id.noticeRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         noticeRecyclerView.setLayoutManager(linearLayoutManager);
-         noticevideoAdapter = new NoticevideoAdapter(context);
+        noticevideoAdapter = new NoticevideoAdapter(context);
         noticeRecyclerView.setAdapter(noticevideoAdapter);
         /**
          * 剧照
          */
         stillsview = get(R.id.stillsview);
         stillsview.findViewById(R.id.btn_hide).setOnClickListener(this);
-       RecyclerView stillsRecyclerView= stillsview.findViewById(R.id.stillsRecyclerView);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        RecyclerView stillsRecyclerView = stillsview.findViewById(R.id.stillsRecyclerView);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         stillsRecyclerView.setLayoutManager(staggeredGridLayoutManager);
         stillsAdapter = new StillsAdapter(context);
         stillsRecyclerView.setAdapter(stillsAdapter);
+        /**
+         *影评
+         */
+        filmreview = get(R.id.filmreview);
+        filmreview.findViewById(R.id.btn_hide).setOnClickListener(this);
+
     }
 
     @Override
     public void suecssString(int type, String data) {
         super.suecssString(type, data);
-        Gson gson = new Gson();
-        FilmDetailsBean filmDetailsBean = gson.fromJson(data, FilmDetailsBean.class);
-         result = filmDetailsBean.getResult();
-        String imageUrl = result.getImageUrl();
-        filmDetails_img.setImageURI(imageUrl);
-        filmDetails_img_Gaussfuzzy.setImageURI(imageUrl);
-        FilmDetails_img.setImageURI(imageUrl);
-        filmDetails_title.setText(result.getName());// 电影详情
-        type_name.setText(result.getMovieTypes());// 电影类型
-        director_name.setText(result.getDirector());// 电影导演
-        duration_name.setText(result.getDuration()); // 电影时长
-        local_name.setText(result.getPlaceOrigin()); // 电影产地
-        plot_content.setText(result.getSummary()); // 电影简介
-        performer.setText(result.getStarring());// 演员列表
-        List<FilmDetailsBean.ResultBean.ShortFilmListBean> shortFilmList = result.getShortFilmList();// 预告片列表
-        noticevideoAdapter.setList(shortFilmList);// 预告片
-        List<String> posterList = result.getPosterList();
-        stillsAdapter.setList(posterList);
+        switch (type) {
+            case 0:
+                Gson gson = new Gson();
+                FilmDetailsBean filmDetailsBean = gson.fromJson(data, FilmDetailsBean.class);
+                result = filmDetailsBean.getResult();
+                String imageUrl = result.getImageUrl();
+                filmDetails_img.setImageURI(imageUrl);
+                filmDetails_img_Gaussfuzzy.setImageURI(imageUrl);
+                FilmDetails_img.setImageURI(imageUrl);
+                filmDetails_title.setText(result.getName());// 电影详情
+                type_name.setText(result.getMovieTypes());// 电影类型
+                director_name.setText(result.getDirector());// 电影导演
+                duration_name.setText(result.getDuration()); // 电影时长
+                local_name.setText(result.getPlaceOrigin()); // 电影产地
+                plot_content.setText(result.getSummary()); // 电影简介
+                performer.setText(result.getStarring());// 演员列表
+                List<FilmDetailsBean.ResultBean.ShortFilmListBean> shortFilmList = result.getShortFilmList();// 预告片列表
+                noticevideoAdapter.setList(shortFilmList);// 预告片
+                List<String> posterList = result.getPosterList();
+                stillsAdapter.setList(posterList);// 剧照
+                // 请求影评接口
+                Map<String,String> map = new HashMap<>();
+                Map<String,String> mapHead = new HashMap<>();
+                SharedPreferences config = context.getSharedPreferences("config", 0);
+                String sessionId = config.getString("sessionId", "");
+                int userId = config.getInt("userId", 0);
+                mapHead.put("sessionId",sessionId);
+                mapHead.put("userId",userId+"");
+                map.put("movieId",result.getId()+"");
+                map.put("page","1");
+                map.put("count","5");
+                getString1(1,HttpUrl.FilmreviewUrl,map,mapHead);
+                break;
+            case 1:
+            Gson gson1 = new Gson();
+                FilmReviewBean filmReviewBean = gson1.fromJson(data, FilmReviewBean.class);
+                List<FilmReviewBean.ResultBean> result = filmReviewBean.getResult();
+
+                break;
+        }
+
 
     }
 
@@ -144,7 +180,7 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
     public void onClick(View view) {
         switch (view.getId()) {
             // 详情
-            case  R.id.filmDetails_btn_Details:
+            case R.id.filmDetails_btn_Details:
                 DetailsView.setVisibility(View.VISIBLE);
                 details_name.setText(result.getName());
                 Details_title.setText(result.getName());
@@ -160,16 +196,23 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
                 DetailsView.setVisibility(View.GONE);
                 noticeview.setVisibility(View.GONE);
                 stillsview.setVisibility(View.GONE);
+                filmreview.setVisibility(View.GONE);
                 details_name.setText("电影详情");
                 filmDetails_title.setText(result.getName());
                 break;
             case R.id.filmDetails_btn_Notice:
                 noticeview.setVisibility(View.VISIBLE);
                 details_name.setText(result.getName());
+                filmDetails_title.setText("");
                 break;
             case R.id.filmDetails_btn_Stills:
                 stillsview.setVisibility(View.VISIBLE);
                 details_name.setText(result.getName());
+                filmDetails_title.setText("");
+                break;
+            case R.id.filmDetails_btn_Filmreview:
+                filmDetails_title.setText("");
+                filmreview.setVisibility(View.VISIBLE);
                 break;
         }
     }

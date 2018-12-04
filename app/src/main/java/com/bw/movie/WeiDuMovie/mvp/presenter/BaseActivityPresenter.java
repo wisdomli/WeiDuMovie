@@ -36,11 +36,8 @@ public abstract class BaseActivityPresenter<T extends AppDelegate>extends AppCom
         delegate.getContext(this);
         initWeiGht();
         delegate.initData();
-        // 沉浸式
-        UltimateBar.newImmersionBuilder()
-                .applyNav(false)   // 是否应用到导航栏
-                .build(this)
-                .apply();
+
+
     }
     public void initWeiGht() {}
 

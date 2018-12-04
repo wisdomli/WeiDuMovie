@@ -19,4 +19,5 @@ public class HttpUrl {
     public static String QueryUrl ="movieApi/cinema/v1/verify/findCinemaPageList";
     public static String SuccessFollow ="movieApi/cinema/v1/verify/followCinema";
     public static String FailureFollow ="movieApi/cinema/v1/verify/cancelFollowCinema";
+    public static String FilmreviewUrl = "movieApi/movie/v1/findAllMovieComment";
 }

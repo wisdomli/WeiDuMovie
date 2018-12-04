@@ -218,5 +218,7 @@
         </RelativeLayout>
     </ScrollView>
 
-
+<include layout="@layout/network"
+    android:id="@+id/networkView"
+    android:visibility="gone"></include>
 </RelativeLayout>

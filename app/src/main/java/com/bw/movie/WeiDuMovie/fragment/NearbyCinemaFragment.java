@@ -13,4 +13,10 @@ public class NearbyCinemaFragment extends BaseFragmentPresenter<NearbyCinemaFrag
     public Class<NearbyCinemaFragmentPresenter> getClassDelegate() {
         return NearbyCinemaFragmentPresenter.class;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        delegate.onResume();
+    }
 }

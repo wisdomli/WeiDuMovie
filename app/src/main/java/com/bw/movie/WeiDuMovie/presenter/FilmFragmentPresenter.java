@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.adapter.IsshowingUpMovieListAdapter;
@@ -12,6 +13,7 @@ import com.bw.movie.WeiDuMovie.adapter.ShowSoonMovieListAdapter;
 import com.bw.movie.WeiDuMovie.bean.MovieListBean;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
+import com.bw.movie.WeiDuMovie.net.NetWork;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -32,6 +34,7 @@ public class FilmFragmentPresenter extends AppDelegate {
     private IsshowingUpMovieListAdapter isshowingUpMovieListAdapter;
     private RecyclerCoverFlow home_viewpager;
     private TabLayout home_TabLayout_view;
+    private View networkView;
 
 
     @Override
@@ -42,15 +45,8 @@ public class FilmFragmentPresenter extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
-        Map<String, String> map = new HashMap<>();
-        map.put("page", "1");
-        map.put("count", "20");
-        // 热门电影请求
-        getString(0, HttpUrl.HotmoviesUrl + "?", map);
-        // 正在热映请求
-        getString(1, HttpUrl.ShowingUpUrl + "?", map);
-        // 即将上映请求
-        getString(2, HttpUrl.ShowSoonUrl, map);
+
+
         //获取控件
         // 热门电影RecyclerView
         RecyclerView Hotmovies_RecyclerView = get(R.id.Hotmovies_RecyclerView);
@@ -93,6 +89,7 @@ public class FilmFragmentPresenter extends AppDelegate {
             }
         });
 
+
     }
 
     // 请求数据
@@ -119,9 +116,6 @@ public class FilmFragmentPresenter extends AppDelegate {
                 List<MovieListBean.ResultBean> result2 = movieListBean2.getResult();
                 showSoonMovieListAdapter.setList(result2);
                 break;
-            case 3:
-
-                break;
         }
 
     }
@@ -132,5 +126,29 @@ public class FilmFragmentPresenter extends AppDelegate {
     public void getContext(Context context) {
         super.getContext(context);
         this.context = context;
+    }
+
+    public void onResume() {
+        // 判断有网无网
+        networkView = get(R.id.networkView);
+        Map<String, String> map = new HashMap<>();
+        map.put("page", "1");
+        map.put("count", "20");
+        if (NetWork.isConnected(context)) {
+            // 热门电影请求
+            getString(0, HttpUrl.HotmoviesUrl + "?", map);
+            // 正在热映请求
+            getString(1, HttpUrl.ShowingUpUrl + "?", map);
+            // 即将上映请求
+            getString(2, HttpUrl.ShowSoonUrl, map);
+            movieListAdapter.notifyDataSetChanged();
+            showSoonMovieListAdapter.notifyDataSetChanged();
+            isshowingUpMovieListAdapter.notifyDataSetChanged();
+            networkView.setVisibility(View.GONE);
+        } else {
+            networkView.setVisibility(View.VISIBLE);
+        }
+
+
     }
 }

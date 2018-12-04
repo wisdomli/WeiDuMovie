@@ -8,9 +8,15 @@ import com.bw.movie.WeiDuMovie.presenter.RecommendCinemaFragmentPresenter;
  * <p>
  * 2018/11/30
  **/
-public class RecommendCinemaFragment extends BaseFragmentPresenter<RecommendCinemaFragmentPresenter>{
+public class RecommendCinemaFragment extends BaseFragmentPresenter<RecommendCinemaFragmentPresenter> {
     @Override
     public Class<RecommendCinemaFragmentPresenter> getClassDelegate() {
         return RecommendCinemaFragmentPresenter.class;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        delegate.onResume();
     }
 }
