@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <TextView
+       android:id="@+id/cinema_name"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/dp_24"
+       android:layout_marginTop="@dimen/dp_30"
+       android:textSize="14sp"
+       android:textColor="#666666"
+       android:layout_alignParentLeft="true"
+       android:text="CGV影城"
+       />
+
+    <ImageView
+        android:id="@+id/cinema_local"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:src="@drawable/com_icon_navigation_default"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_30"
+        />
+
+    <TextView
+        android:id="@+id/cinema_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@+id/cinema_name"
+        android:layout_marginLeft="@dimen/dp_24" />
+
+
+    <RelativeLayout
+        android:id="@+id/film_details"
+        android:layout_below="@+id/cinema_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_width="match_parent"
+        android:background="@drawable/moviebackground_04"
+        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/film_image"
+            android:layout_width="103dp"
+            android:layout_marginLeft="@dimen/dp_06"
+            android:layout_centerVertical="true"
+            android:layout_height="@dimen/dp_130"
+            app:roundedCornerRadius="@dimen/dp_06"/>
+     <TextView
+         android:id="@+id/film_title"
+         android:layout_toRightOf="@+id/film_image"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="@dimen/dp_20"
+         android:layout_marginLeft="@dimen/dp_20"
+         android:textSize="@dimen/dp_20"
+         android:textColor="#ffffff"
+        android:text="铁甲战士" />
+
+        <TextView
+            android:id="@+id/film_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:layout_below="@+id/film_title"
+            android:layout_toRightOf="@+id/film_image"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:text="类型:"/>
+
+        <TextView
+            android:id="@+id/film_director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:layout_below="@+id/film_type"
+            android:layout_toRightOf="@+id/film_image"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:text="导演:"/>
+        <TextView
+            android:id="@+id/film_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:layout_below="@+id/film_director"
+            android:layout_toRightOf="@+id/film_image"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:text="时长:"/>
+
+        <TextView
+            android:id="@+id/film_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:layout_below="@+id/film_time"
+            android:layout_toRightOf="@+id/film_image"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:text="产地:"/>
+
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/film_price_RecyclerView"
+        android:layout_below="@+id/film_details"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+</RelativeLayout>

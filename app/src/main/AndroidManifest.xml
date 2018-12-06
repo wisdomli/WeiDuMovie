@@ -35,6 +35,8 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.UpdateUserActivity"></activity>
+        <activity android:name=".activity.TicketDetailsActivity"></activity>
+        <activity android:name=".activity.MovieTicketActivity"></activity>
     </application>
 
 </manifest>
