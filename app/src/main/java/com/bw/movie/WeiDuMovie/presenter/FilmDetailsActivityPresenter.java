@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.bw.movie.WeiDuMovie.R;
 import com.bw.movie.WeiDuMovie.activity.FilmDetailsActivity;
+import com.bw.movie.WeiDuMovie.activity.TicketDetailsActivity;
+import com.bw.movie.WeiDuMovie.adapter.FilmReviewAdapter;
 import com.bw.movie.WeiDuMovie.adapter.NoticevideoAdapter;
 import com.bw.movie.WeiDuMovie.adapter.StillsAdapter;
 import com.bw.movie.WeiDuMovie.bean.FilmDetailsBean;
@@ -54,9 +56,13 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
     private View stillsview;
     private StillsAdapter stillsAdapter;
     private View filmreview;
+
     private ImageView image_follow_film;
     private int id;
     private boolean followMovie;
+
+    private FilmReviewAdapter filmReviewAdapter;
+
 
     @Override
     public int getLayoutId() {
@@ -74,7 +80,7 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
 
         FilmDetails_img = (SimpleDraweeView) get(R.id.filmDetails_img);
         filmDetails_img_Gaussfuzzy = (SimpleDraweeView) get(R.id.filmDetails_img_Gaussfuzzy);
-        filmDetails_title = (TextView) get(R.id.filmDetails_title);// 电影详情
+        filmDetails_title = (TextView) get(R.id.filmDetails_title);// 电影name
         details_name = (TextView) get(R.id.details_name);// 电影详情
         image_follow_film = get(R.id.image_follow_film);//关注
         setOnClikLisener(this,
@@ -132,6 +138,18 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
 
         }
 
+
+       RecyclerView filmreviewRecyclerView = filmreview.findViewById(R.id.filmreviewRecyclerView);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(context);
+        filmreviewRecyclerView.setLayoutManager(linearLayoutManager1);
+         filmReviewAdapter = new FilmReviewAdapter(context);
+        filmreviewRecyclerView.setAdapter(filmReviewAdapter);
+        filmReviewAdapter.rsout(new FilmReviewAdapter.setPraise() {
+            @Override
+            public void setpraise() {
+                filmReviewAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -150,7 +168,8 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
                 filmDetails_img.setImageURI(imageUrl);
                 filmDetails_img_Gaussfuzzy.setImageURI(imageUrl);
                 FilmDetails_img.setImageURI(imageUrl);
-                filmDetails_title.setText(result.getName());// 电影详情
+                filmDetails_title.setText(result.getName());// 电影名字
+
                 type_name.setText(result.getMovieTypes());// 电影类型
                 director_name.setText(result.getDirector());// 电影导演
                 duration_name.setText(result.getDuration()); // 电影时长
@@ -171,14 +190,14 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
                 mapHead.put("userId",userId+"");
                 map.put("movieId",result.getId()+"");
                 map.put("page","1");
-                map.put("count","5");
+                map.put("count","20");
                 getString1(1,HttpUrl.FilmreviewUrl,map,mapHead);
                 break;
             case 1:
             Gson gson1 = new Gson();
                 FilmReviewBean filmReviewBean = gson1.fromJson(data, FilmReviewBean.class);
                 List<FilmReviewBean.ResultBean> result = filmReviewBean.getResult();
-
+                filmReviewAdapter.setList(result);
                 break;
             case 2:
                 Gson gson2 = new Gson();
@@ -220,7 +239,15 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
                 ((FilmDetailsActivity) context).finish();
                 break;
             case R.id.filmDetails_btn_Tickebuy:
-                Toast.makeText(context, "支付功能暂未实现", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent((FilmDetailsActivity)context, TicketDetailsActivity.class);
+                intent.putExtra("movieId",result.getId());
+                intent.putExtra("name",result.getName());
+                intent.putExtra("img",result.getImageUrl());
+                intent.putExtra("duration",result.getDuration());
+                intent.putExtra("type",result.getMovieTypes());
+                intent.putExtra("director",result.getDirector());
+                intent.putExtra("local",result.getPlaceOrigin());
+                context.startActivity(intent);
                 break;
             case R.id.btn_hide:
                 DetailsView.setVisibility(View.GONE);

@@ -74,6 +74,7 @@ public class RecommendCinemaAdapter extends RecyclerCoverFlow.Adapter<RecommendC
             @Override
             public void onClick(View view) {
                 initDate();
+                notifyDataSetChanged();
             }
         });
 

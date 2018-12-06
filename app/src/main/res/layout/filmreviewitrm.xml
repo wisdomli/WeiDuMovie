@@ -1,53 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/user_img"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_marginLeft="@dimen/dp_24"
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
-         app:roundAsCircle="true"
-        android:background="@drawable/moviebackground_02"
-        android:layout_marginBottom="@dimen/dp_12" />
+        android:layout_marginBottom="@dimen/dp_12"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        app:roundAsCircle="true" />
 
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/user_img"
-        android:layout_marginTop="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_10"
-        android:textColor="#333333"
-        android:textSize="14sp"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_toRightOf="@+id/user_img"
         android:text="顾梓舒"
-        />
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/user_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/user_img"
         android:layout_marginLeft="@dimen/dp_24"
-        android:layout_marginRight="@dimen/dp_24"
-        android:layout_below="@+id/user_img"/>
+        android:layout_marginRight="@dimen/dp_24" />
 
     <TextView
         android:id="@+id/user_time"
-        android:layout_below="@+id/user_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:textSize="12sp"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@+id/user_content"
         android:layout_marginLeft="@dimen/dp_24"
-        android:textColor="#999999"/>
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="2018-12-03"
+        android:textColor="#999999"
+        android:textSize="12sp" />
 
+    <ImageView
+        android:id="@+id/praise_img"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/user_content"
+        android:layout_marginRight="@dimen/dp_06"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toLeftOf="@+id/praise_number"
+        android:src="@drawable/com_icon_praise_default" />
 
+    <TextView
+        android:id="@+id/praise_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toLeftOf="@+id/message_img" />
 
+    <ImageView
+        android:id="@+id/message_img"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/user_content"
+        android:layout_marginLeft="@dimen/dp_18"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toLeftOf="@+id/message_number"
+        android:src="@drawable/com_icon_comment_default" />
 
-
+    <TextView
+        android:id="@+id/message_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/user_content"
+        android:layout_marginLeft="@dimen/dp_06"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_10" />
 
 </RelativeLayout>

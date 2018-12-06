@@ -27,5 +27,6 @@ public class HttpUrl {
     public static String CinemaInfoUrl = "movieApi/cinema/v1/findCinemaInfo";
     public static String ByCinemaIdUrl = "movieApi/movie/v1/findMovieListByCinemaId";
     public static String MovieScheduleUrl = "movieApi/movie/v1/findMovieScheduleList";
-
+    public static String PraiseUrl = "movieApi/movie/v1/verify/movieCommentGreat";
+    public static String CinemasListUrl = "movieApi/movie/v1/findCinemasListByMovieId";
 }

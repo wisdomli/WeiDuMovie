@@ -31,11 +31,10 @@
         <activity android:name=".activity.MyversionActivity" />
         <activity android:name=".activity.FeedbacksuccessActivity" />
         <activity android:name=".activity.InFoActivity"></activity>
-        <activity
-            android:name=".activity.FilmDetailsActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FilmDetailsActivity"></activity>
         <activity android:name=".activity.UpdateUserActivity" />
+        <activity android:name=".activity.TicketDetailsActivity"></activity>
+        <activity android:name=".activity.MovieTicketActivity"></activity>
     </application>
 
 </manifest>
