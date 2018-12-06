@@ -1,15 +1,14 @@
 package com.bw.movie.WeiDuMovie.presenter;
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +18,7 @@ import com.bw.movie.WeiDuMovie.adapter.NoticevideoAdapter;
 import com.bw.movie.WeiDuMovie.adapter.StillsAdapter;
 import com.bw.movie.WeiDuMovie.bean.FilmDetailsBean;
 import com.bw.movie.WeiDuMovie.bean.FilmReviewBean;
+import com.bw.movie.WeiDuMovie.bean.SuccessCinemaFollow;
 import com.bw.movie.WeiDuMovie.mvp.view.AppDelegate;
 import com.bw.movie.WeiDuMovie.net.HttpUrl;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -54,6 +54,9 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
     private View stillsview;
     private StillsAdapter stillsAdapter;
     private View filmreview;
+    private ImageView image_follow_film;
+    private int id;
+    private boolean followMovie;
 
     @Override
     public int getLayoutId() {
@@ -73,12 +76,14 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
         filmDetails_img_Gaussfuzzy = (SimpleDraweeView) get(R.id.filmDetails_img_Gaussfuzzy);
         filmDetails_title = (TextView) get(R.id.filmDetails_title);// 电影详情
         details_name = (TextView) get(R.id.details_name);// 电影详情
+        image_follow_film = get(R.id.image_follow_film);//关注
         setOnClikLisener(this,
                 R.id.filmDetails_btn_back, // 返回销毁当前页面
                 R.id.filmDetails_btn_Tickebuy,// 购票
                 R.id.filmDetails_btn_Details,// 详情
                 R.id.filmDetails_btn_Notice,// 预告
                 R.id.filmDetails_btn_Stills,// 剧照
+                R.id.image_follow_film,//关注
                 R.id.filmDetails_btn_Filmreview);// 影评
         /**
          * 详情
@@ -119,6 +124,14 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
         filmreview = get(R.id.filmreview);
         filmreview.findViewById(R.id.btn_hide).setOnClickListener(this);
 
+
+        if (followMovie){
+            image_follow_film.setImageResource(R.drawable.com_icon_collection_selected);
+        }else {
+            image_follow_film.setImageResource(R.drawable.com_icon_collection_default);
+
+        }
+
     }
 
     @Override
@@ -129,6 +142,10 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
                 Gson gson = new Gson();
                 FilmDetailsBean filmDetailsBean = gson.fromJson(data, FilmDetailsBean.class);
                 result = filmDetailsBean.getResult();
+                result.setFollowMovie(false);
+                followMovie = result.isFollowMovie();
+
+                id = result.getId();
                 String imageUrl = result.getImageUrl();
                 filmDetails_img.setImageURI(imageUrl);
                 filmDetails_img_Gaussfuzzy.setImageURI(imageUrl);
@@ -162,6 +179,19 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
                 FilmReviewBean filmReviewBean = gson1.fromJson(data, FilmReviewBean.class);
                 List<FilmReviewBean.ResultBean> result = filmReviewBean.getResult();
 
+                break;
+            case 2:
+                Gson gson2 = new Gson();
+                SuccessCinemaFollow successBean = gson2.fromJson(data, SuccessCinemaFollow.class);
+                String status = successBean.getStatus();
+                String message = successBean.getMessage();
+                if (status.equals("0000")){
+
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
 
@@ -213,6 +243,20 @@ public class FilmDetailsActivityPresenter extends AppDelegate implements View.On
             case R.id.filmDetails_btn_Filmreview:
                 filmDetails_title.setText("");
                 filmreview.setVisibility(View.VISIBLE);
+                break;
+
+            case R.id.image_follow_film:
+                    result.setFollowMovie(true);
+
+                String sessionId = context.getSharedPreferences("config", 0).getString("sessionId", "").toString();
+                int userId = context.getSharedPreferences("config", 0).getInt("userId", 0);
+                Map<String, String> hashMap = new HashMap<>();
+                Map<String, String> hashMapHead = new HashMap<>();
+                hashMap.put("movieId",id+"");
+                hashMapHead.put("sessionId",sessionId);
+                hashMapHead.put("userId",userId+"");
+                hashMapHead.put("Content-Type","application/x-www-form-urlencoded");
+                getString1(2,HttpUrl.MovieSuccessFollow,hashMap,hashMapHead);
                 break;
         }
     }

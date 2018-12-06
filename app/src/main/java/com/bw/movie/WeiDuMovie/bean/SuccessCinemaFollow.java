@@ -4,7 +4,7 @@ package com.bw.movie.WeiDuMovie.bean;
  * 作者：温浩
  * 时间：2018/12/3
  */
-public class FollowSuccessBean {
+public class SuccessCinemaFollow {
 
     /**
      * message : 关注成功

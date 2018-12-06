@@ -48,7 +48,13 @@ public class MyFollowActivityPresenter extends AppDelegate implements View.OnCli
         setOnClikLisener(this,R.id.my_Film);
         setOnClikLisener(this,R.id.my_Cinema);
         setOnClikLisener(this,R.id.image_back_follow);
-        //默认选中
+        //设置默认显示第一个fragment数据
+        fragmentManager = ((MyFollowActivity) context).getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        fragment01 = new Fragment01();
+        transaction.replace(R.id.frame_layout, fragment01);
+        transaction.commit();
+        //默认选中第一个
         my_Film.setTextColor(Color.WHITE);
         my_Film.setBackgroundResource(R.drawable.cinema_btn);
         my_Cinema.setTextColor(Color.BLACK);
@@ -69,10 +75,12 @@ public class MyFollowActivityPresenter extends AppDelegate implements View.OnCli
                 ((MyFollowActivity) context).finish();
                 break;
             case R.id.my_Film:
+                //默认选中状态下
                 my_Film.setTextColor(Color.WHITE);
                 my_Film.setBackgroundResource(R.drawable.cinema_btn);
                 my_Cinema.setTextColor(Color.BLACK);
                 my_Cinema.setBackgroundResource(R.drawable.cinema_btn_f);
+                //fragment1
                 fragmentManager = ((MyFollowActivity) context).getSupportFragmentManager();
                 transaction = fragmentManager.beginTransaction();
                 fragment01 = new Fragment01();
@@ -80,10 +88,12 @@ public class MyFollowActivityPresenter extends AppDelegate implements View.OnCli
                 transaction.commit();
                 break;
             case R.id.my_Cinema:
+                //切换选中状态下
                 my_Cinema.setTextColor(Color.WHITE);
                 my_Cinema.setBackgroundResource(R.drawable.cinema_btn);
                 my_Film.setTextColor(Color.BLACK);
                 my_Film.setBackgroundResource(R.drawable.cinema_btn_f);
+                //fragment2
                 fragmentManager1 = ((MyFollowActivity) context).getSupportFragmentManager();
                 transaction1 = fragmentManager1.beginTransaction();
                 fragment02 = new Fragment02();

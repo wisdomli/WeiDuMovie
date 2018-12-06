@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/moviebackground_02"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/moviebackground_02" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/film_list_recy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_90"
+        android:layout_marginTop="@dimen/dp_30"></android.support.v7.widget.RecyclerView>
+
+    <recycler.coverflow.RecyclerCoverFlow
+        android:id="@+id/home_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="140dp"></recycler.coverflow.RecyclerCoverFlow>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/home_TabLayout_view"
+        android:layout_width="350dp"
+        android:layout_height="@dimen/dp_05"
+        android:layout_below="@+id/home_viewpager"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/home_view"></android.support.design.widget.TabLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/home_TabLayout_view"
+            android:id="@+id/recy_view_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    <ImageView
+        android:id="@+id/image_back"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:src="@drawable/com_icon_my_default_back"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60" />
+</RelativeLayout>

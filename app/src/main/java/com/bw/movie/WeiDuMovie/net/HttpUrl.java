@@ -16,8 +16,16 @@ public class HttpUrl {
     public static String FeedBackUrl = "movieApi/tool/v1/verify/recordFeedBack";
     public static String MoviesDetailUrl ="movieApi/movie/v1/findMoviesDetail";
     public static String UpdateUrl ="movieApi/user/v1/verify/modifyUserInfo";
-    public static String QueryUrl ="movieApi/cinema/v1/verify/findCinemaPageList";
-    public static String SuccessFollow ="movieApi/cinema/v1/verify/followCinema";
+    public static String QueryCinemaUrl ="movieApi/cinema/v1/verify/findCinemaPageList";
+    public static String SuccessCinemaFollow ="movieApi/cinema/v1/verify/followCinema";
     public static String FailureFollow ="movieApi/cinema/v1/verify/cancelFollowCinema";
+    public static String MovieQueryUrl ="movieApi/movie/v1/verify/findMoviePageList";
+    public static String MovieSuccessFollow ="movieApi/movie/v1/verify/followMovie";
+    public static String MovieFailureFollow ="movieApi/movie/v1/verify/cancelFollowMovie";
     public static String FilmreviewUrl = "movieApi/movie/v1/findAllMovieComment";
+    public static String VersionUrl = "movieApi/tool/v1/findNewVersion";
+    public static String CinemaInfoUrl = "movieApi/cinema/v1/findCinemaInfo";
+    public static String ByCinemaIdUrl = "movieApi/movie/v1/findMovieListByCinemaId";
+    public static String MovieScheduleUrl = "movieApi/movie/v1/findMovieScheduleList";
+
 }

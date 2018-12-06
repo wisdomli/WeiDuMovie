@@ -9,7 +9,7 @@ import java.util.List;
 public class QueryFollowBean {
 
     /**
-     * result : []
+     * result : [{"address":"海淀区中关村广场购物中心津乐汇三层（鼎好一期西侧）","commentTotal":0,"distance":0,"followCinema":false,"id":12,"logo":"http://mobile.bwstudent.com/images/movie/logo/mjhlyc.jpg","name":"美嘉欢乐影城中关村店"}]
      * message : 查询成功
      * status : 0000
      */
@@ -43,6 +43,16 @@ public class QueryFollowBean {
     }
 
     public static class ResultBean {
+        /**
+         * address : 海淀区中关村广场购物中心津乐汇三层（鼎好一期西侧）
+         * commentTotal : 0
+         * distance : 0
+         * followCinema : false
+         * id : 12
+         * logo : http://mobile.bwstudent.com/images/movie/logo/mjhlyc.jpg
+         * name : 美嘉欢乐影城中关村店
+         */
+
         private String address;
         private int commentTotal;
         private int distance;
