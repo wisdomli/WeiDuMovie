@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_170"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/location"
+                android:src="@drawable/cinema_detail_icon_location_default"
+                android:layout_width="@dimen/dp_24"
+                android:layout_margin="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/dp_24" />
+            <TextView
+                android:text="地址"
+                android:id="@+id/location_text"
+                android:layout_toRightOf="@+id/location"
+                android:textSize="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/phone"
+                android:src="@drawable/cinema_detail_icon_phone_default"
+                android:layout_width="@dimen/dp_24"
+                android:layout_margin="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24" />
+            <TextView
+                android:text="电话"
+                android:id="@+id/phone_text"
+                android:layout_toRightOf="@+id/phone"
+                android:textSize="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/route"
+                android:src="@drawable/cinema_detail_icon_route_default"
+                android:layout_width="@dimen/dp_24"
+                android:layout_margin="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24" />
+            <TextView
+                android:text="乘车路线"
+                android:layout_toRightOf="@+id/route"
+                android:textSize="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/route_text"
+                android:text="路线"
+                android:textSize="@dimen/dp_12"
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/dp_24"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

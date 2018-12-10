@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_120"
+        android:background="@drawable/detailsview_bck">
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/notice_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_90"
+        android:layout_marginTop="@dimen/dp_140"
+        android:text="详情"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/notice_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_240"
+        android:layout_marginTop="@dimen/dp_140"
+        android:text="评论"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/notice_view"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_03"
+        android:layout_below="@+id/notice_details"
+        android:layout_marginLeft="@dimen/dp_90"
+        android:layout_marginTop="@dimen/dp_06"
+        android:background="@drawable/cinema_btn"></View>
+    <View
+        android:id="@+id/noticeTwo_view"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_03"
+        android:visibility="gone"
+        android:layout_below="@+id/notice_comment"
+        android:layout_marginLeft="@dimen/dp_240"
+        android:layout_marginTop="@dimen/dp_06"
+        android:background="@drawable/cinema_btn">
+    </View>
+
+    <ImageView
+        android:id="@+id/btn_hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_120"
+        android:src="@drawable/com_icon_down_default" />
+    <include android:id="@+id/details"
+        layout="@layout/details_layout"></include>
+
+    <include android:id="@+id/common"
+        layout="@layout/common_layout"
+        android:visibility="gone"></include>
+</RelativeLayout>

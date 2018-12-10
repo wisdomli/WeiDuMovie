@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/user_img1"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        app:roundAsCircle="true" />
+
+    <TextView
+        android:id="@+id/user_name1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_toRightOf="@+id/user_img1"
+        android:text="忆千城"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <TextView
+        android:text="评论内容"
+        android:id="@+id/user_content1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_img1"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24" />
+
+    <TextView
+        android:id="@+id/user_time1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_content1"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="2018-12-03"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/praise_img1"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="@dimen/dp_300"
+        android:layout_below="@+id/user_content1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:src="@drawable/com_icon_praise_default" />
+
+    <TextView
+        android:id="@+id/praise_number1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_05"
+        android:layout_below="@+id/user_content1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/praise_img1" />
+
+
+
+</RelativeLayout>
